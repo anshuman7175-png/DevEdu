@@ -28,11 +28,11 @@ const LANGUAGES = {
   or: "ଓଡ଼ିଆ", as: "অসমীয়া"
 };
 
-const defaultProfiles = ["Aarav", "Anaya", "Vihaan"];
+const defaultProfiles = ["Anshuman", "Nistha", "Vihaan"];
 const profileDefaults = {
-  Aarav: { ageGroup: "8-12", progress: { math: 78, science: 64, languages: 72 }, values: { empathy: 82, responsibility: 69, safety: 75 }, profile: { nickname: "Aarav", goal: "Master fractions", favorite: "Space", style: "Visual" } },
-  Anaya: { ageGroup: "3-7", progress: { math: 45, science: 40, languages: 55 }, values: { empathy: 60, responsibility: 52, safety: 48 }, profile: { nickname: "Anaya", goal: "Read 5 new words", favorite: "Animals", style: "Play" } },
-  Vihaan: { ageGroup: "13-18", progress: { math: 70, science: 73, languages: 66 }, values: { empathy: 74, responsibility: 71, safety: 78 }, profile: { nickname: "Vihaan", goal: "Ace civics", favorite: "Technology", style: "Debate" } },
+  Anshuman: { ageGroup: "8-12", progress: { math: 78, science: 64, languages: 72 }, values: { empathy: 82, responsibility: 69, safety: 75 }, profile: { nickname: "Anshuman", goal: "Master fractions", favorite: "Space", style: "Visual" } },
+  Nistha: { ageGroup: "3-7", progress: { math: 45, science: 40, languages: 55 }, values: { empathy: 60, responsibility: 52, safety: 48 }, profile: { nickname: "Nistha", goal: "Read 5 new words", favorite: "Animals", style: "Play" } },
+  Vihaan: { ageGroup: "13-18", progress: { math: 70, science: 73, languages: 66 }, values: { empathy: 74, responsibility: 71, safety: 78 }, profile: { nickname: "Vihaan", goal:"Ace civics", favorite:"Technology", style:"Debate" } },
 };
 
 // ──── XP & LEVEL SYSTEM ────
