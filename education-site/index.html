@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevEdu India — Learn, Play, Grow 🇮🇳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ═══════  NAVIGATION  ═══════ -->
+  <nav class="topnav glass">
+    <div class="nav-left">
+      <button class="hamburger" aria-label="Menu">☰</button>
+      <a href="index.html" class="brand-badge">🎓 DevEdu India</a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="learn.html">Learn</a>
+      <a href="games.html">Games</a>
+      <a href="life.html">Life Skills</a>
+      <a href="creative.html">Creative</a>
+      <a href="health.html">Health</a>
+      <a href="career.html">Career</a>
+      <a href="stories.html">Stories</a>
+      <a href="daily.html">Daily Plan</a>
+      <a href="parents.html">Parents</a>
+    </div>
+    <div class="nav-right">
+      <button data-theme-toggle class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+      <button data-open-settings class="icon-btn" aria-label="Settings">⚙️</button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer">
+    <button class="drawer-close" aria-label="Close">✕</button>
+    <a href="index.html">🏠 Home</a>
+    <a href="learn.html">📚 Learn</a>
+    <a href="games.html">🎮 Games</a>
+    <a href="life.html">💡 Life Skills</a>
+    <a href="creative.html">🎨 Creative Studio</a>
+    <a href="health.html">🧘 Health & Yoga</a>
+    <a href="career.html">🗺️ Career Explorer</a>
+    <a href="stories.html">📖 Stories</a>
+    <a href="daily.html">📅 Daily Plan</a>
+    <a href="parents.html">👪 Parents</a>
+    <a href="auth.html">🔑 Login</a>
+  </div>
+
+  <!-- ═══════  HERO  ═══════ -->
+  <header class="hero">
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-content">
+      <h1 class="hero-title i18n" data-en="India's Ultimate Learning Platform" data-hi="भारत का सर्वश्रेष्ठ शिक्षा मंच">India's Ultimate Learning Platform</h1>
+      <p class="hero-subtitle i18n" data-en="Learn, Play, Create & Grow — designed for every Indian child, in every language, for every dream." data-hi="सीखें, खेलें, बनाएं और बढ़ें — हर भारतीय बच्चे के लिए, हर भाषा में, हर सपने के लिए।">Learn, Play, Create & Grow — designed for every Indian child, in every language, for every dream.</p>
+      <div class="hero-buttons">
+        <a href="learn.html" class="button primary large">📚 Start Learning</a>
+        <a href="games.html" class="button secondary large">🎮 Play & Learn</a>
+        <a href="creative.html" class="button accent large">🎨 Create</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════  PROFILE & LANGUAGE BAR  ═══════ -->
+  <section class="control-bar glass reveal">
+    <div class="control-group">
+      <label class="i18n" data-en="Profile" data-hi="प्रोफ़ाइल">Profile</label>
+      <select data-profile-select aria-label="Select profile"></select>
+      <div class="profile-form" style="display:inline-flex; gap:.4rem; align-items:center;">
+        <input data-new-profile placeholder="New name…" maxlength="20" style="padding:.4rem .6rem; border-radius:8px; border:1px solid var(--border);" />
+        <button data-add-profile class="button secondary small">+</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="i18n" data-en="Language" data-hi="भाषा">Language</label>
+      <button data-lang="en" class="button small">English</button>
+      <button data-lang="hi" class="button small secondary">हिंदी</button>
+    </div>
+    <div class="control-group">
+      <label class="i18n" data-en="Age Group" data-hi="आयु वर्ग">Age Group</label>
+      <button data-age="3-7" class="button small secondary">3-7</button>
+      <button data-age="8-12" class="button small">8-12</button>
+      <button data-age="13-18" class="button small secondary">13-18</button>
+    </div>
+  </section>
+
+  <!-- ═══════  XP BAR  ═══════ -->
+  <section class="xp-section reveal">
+    <div class="xp-bar">
+      <div class="xp-fill"></div>
+    </div>
+    <div class="xp-info">
+      <span class="xp-badge">⭐ Level <span class="xp-level">1</span></span>
+      <span class="xp-text">0/100 XP</span>
+      <span class="xp-badge">🔥 Streak: <span class="streak-count">0</span></span>
+    </div>
+  </section>
+
+  <!-- ═══════  AI GREETING  ═══════ -->
+  <section class="card glass reveal ai-greeting-card">
+    <div class="ai-greeting-avatar">🤖</div>
+    <div>
+      <p class="ai-greeting-text" data-personal="greeting"></p>
+      <p class="ai-greeting-sub" data-personal="encouragement"></p>
+      <p class="ai-greeting-style" data-personal="style"></p>
+    </div>
+  </section>
+
+  <!-- ═══════  QUICK FEATURE GRID  ═══════ -->
+  <section class="main-grid reveal">
+    <a href="learn.html" class="feature-card">
+      <span class="feature-icon">📚</span>
+      <h3 class="i18n" data-en="NCERT Lessons" data-hi="NCERT पाठ">NCERT Lessons</h3>
+      <p class="i18n" data-en="Math, Science, Hindi, English & more — grade 1 to 12." data-hi="गणित, विज्ञान, हिंदी, अंग्रेजी — कक्षा 1 से 12।">Math, Science, Hindi, English & more — grade 1 to 12.</p>
+    </a>
+    <a href="games.html" class="feature-card">
+      <span class="feature-icon">🎮</span>
+      <h3 class="i18n" data-en="Learning Games" data-hi="सीखने के खेल">Learning Games</h3>
+      <p class="i18n" data-en="Quizzes, math challenges, word games & science puzzles." data-hi="क्विज़, गणित चुनौतियां, शब्द खेल और विज्ञान पहेलियां।">Quizzes, math challenges, word games & science puzzles.</p>
+    </a>
+    <a href="creative.html" class="feature-card">
+      <span class="feature-icon">🎨</span>
+      <h3 class="i18n" data-en="Creative Studio" data-hi="क्रिएटिव स्टूडियो">Creative Studio</h3>
+      <p class="i18n" data-en="Drawing canvas, coding sandbox, music maker & storytelling." data-hi="ड्राइंग कैनवास, कोडिंग, संगीत निर्माता और कहानी।">Drawing canvas, coding sandbox, music maker & storytelling.</p>
+    </a>
+    <a href="health.html" class="feature-card">
+      <span class="feature-icon">🧘</span>
+      <h3 class="i18n" data-en="Health & Yoga" data-hi="स्वास्थ्य और योग">Health & Yoga</h3>
+      <p class="i18n" data-en="Breathing exercises, yoga timer, nutrition guide & mental wellness." data-hi="श्वास व्यायाम, योग टाइमर, पोषण गाइड और मानसिक स्वास्थ्य।">Breathing exercises, yoga timer, nutrition guide & mental wellness.</p>
+    </a>
+    <a href="stories.html" class="feature-card">
+      <span class="feature-icon">📖</span>
+      <h3 class="i18n" data-en="Indian Stories" data-hi="भारतीय कहानियां">Indian Stories</h3>
+      <p class="i18n" data-en="Panchatantra, Birbal, moral stories & regional tales with audio." data-hi="पंचतंत्र, बीरबल, नैतिक कहानियां और ऑडियो।">Panchatantra, Birbal, moral stories & regional tales with audio.</p>
+    </a>
+    <a href="career.html" class="feature-card">
+      <span class="feature-icon">🗺️</span>
+      <h3 class="i18n" data-en="Career Explorer" data-hi="करियर एक्सप्लोरर">Career Explorer</h3>
+      <p class="i18n" data-en="Discover careers, skills needed, and plan your future." data-hi="करियर खोजें, कौशल जानें, भविष्य बनाएं।">Discover careers, skills needed, and plan your future.</p>
+    </a>
+    <a href="life.html" class="feature-card">
+      <span class="feature-icon">💡</span>
+      <h3 class="i18n" data-en="Life Skills" data-hi="जीवन कौशल">Life Skills</h3>
+      <p class="i18n" data-en="Values, empathy, civic sense, safety & kindness tracker." data-hi="मूल्य, सहानुभूति, नागरिक समझ, सुरक्षा और दया ट्रैकर।">Values, empathy, civic sense, safety & kindness tracker.</p>
+    </a>
+    <a href="daily.html" class="feature-card">
+      <span class="feature-icon">📅</span>
+      <h3 class="i18n" data-en="Daily Plan" data-hi="दैनिक योजना">Daily Plan</h3>
+      <p class="i18n" data-en="Smart timetable, focus sprints, wellbeing breaks & study goals." data-hi="स्मार्ट टाइमटेबल, फोकस स्प्रिंट, वेलबीइंग ब्रेक और लक्ष्य।">Smart timetable, focus sprints, wellbeing breaks & study goals.</p>
+    </a>
+  </section>
+
+  <!-- ═══════  QUICK QUIZ  ═══════ -->
+  <section class="card reveal" id="quiz">
+    <h2 class="i18n" data-en="⚡ Quick Quiz" data-hi="⚡ त्वरित क्विज़">⚡ Quick Quiz</h2>
+    <div class="progress" style="margin-bottom:1rem;"><span></span></div>
+    <p class="quiz-question" style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;"></p>
+    <div class="quiz-options"></div>
+    <p style="margin-top:.5rem;" class="quiz-score i18n" data-en="Score" data-hi="स्कोर"></p>
+  </section>
+
+  <!-- ═══════  ACHIEVEMENTS  ═══════ -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🏆 Your Achievements" data-hi="🏆 आपकी उपलब्धियां">🏆 Your Achievements</h2>
+    <div class="achievement-grid"></div>
+  </section>
+
+  <!-- ═══════  WHAT MAKES US SPECIAL  ═══════ -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="✨ What Makes DevEdu Special" data-hi="✨ DevEdu क्या ख़ास बनाता है">✨ What Makes DevEdu Special</h2>
+    <div class="main-grid" style="margin-top:1rem;">
+      <div class="feature-card mini">
+        <span class="feature-icon">🌐</span>
+        <h3>12+ Languages</h3>
+        <p>Hindi, Tamil, Telugu, Bengali, Marathi, Gujarati, Kannada & more</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🎒</span>
+        <h3>All Boards</h3>
+        <p>CBSE, ICSE, State Boards & IB curriculum support</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🤖</span>
+        <h3>AI Buddy</h3>
+        <p>Personal AI tutor that adapts to your learning style</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">♿</span>
+        <h3>Accessible</h3>
+        <p>Dyslexia mode, high contrast, screen reader friendly</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🏅</span>
+        <h3>Gamified</h3>
+        <p>XP points, levels, achievements, streaks & confetti!</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">📱</span>
+        <h3>Works Everywhere</h3>
+        <p>Phone, tablet & desktop — fully responsive</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════  STATS  ═══════ -->
+  <section class="card glass reveal" style="text-align:center;">
+    <div class="main-grid" style="margin-top:1rem;">
+      <div style="padding:1rem;">
+        <div style="font-size:2.5rem;font-weight:800;color:var(--primary);">15+</div>
+        <p class="i18n" data-en="Interactive Lessons" data-hi="इंटरैक्टिव पाठ">Interactive Lessons</p>
+      </div>
+      <div style="padding:1rem;">
+        <div style="font-size:2.5rem;font-weight:800;color:var(--secondary);">12</div>
+        <p class="i18n" data-en="Indian Languages" data-hi="भारतीय भाषाएं">Indian Languages</p>
+      </div>
+      <div style="padding:1rem;">
+        <div style="font-size:2.5rem;font-weight:800;color:var(--accent);">50+</div>
+        <p class="i18n" data-en="Quizzes & Games" data-hi="क्विज़ और खेल">Quizzes & Games</p>
+      </div>
+      <div style="padding:1rem;">
+        <div style="font-size:2.5rem;font-weight:800;color:var(--success);">100%</div>
+        <p class="i18n" data-en="Free & Safe" data-hi="मुफ्त और सुरक्षित">Free & Safe</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════  BOARDS COVERED  ═══════ -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🏫 Boards We Cover" data-hi="🏫 हम किन बोर्ड को कवर करते हैं">🏫 Boards We Cover</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1rem;">
+      <span class="badge">CBSE</span><span class="badge">ICSE</span><span class="badge">State Boards</span><span class="badge">IB</span><span class="badge">IGCSE</span><span class="badge">NIOS</span>
+    </div>
+  </section>
+
+  <!-- ═══════  PARENT CTA  ═══════ -->
+  <section class="card glass reveal" style="text-align:center;">
+    <h2 class="i18n" data-en="👪 Parents Dashboard" data-hi="👪 अभिभावक डैशबोर्ड">👪 Parents Dashboard</h2>
+    <p class="i18n" data-en="Track your child's progress, view reports, and manage learning goals." data-hi="अपने बच्चे की प्रगति ट्रैक करें, रिपोर्ट देखें, और लक्ष्य प्रबंधित करें।">Track your child's progress, view reports, and manage learning goals.</p>
+    <a href="parents.html" class="button primary" style="margin-top:1rem;">Open Dashboard</a>
+  </section>
+
+  <!-- ═══════  FOOTER  ═══════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3>🎓 DevEdu India</h3>
+        <p class="i18n" data-en="India's most advanced education platform for children. Designed with ❤️ for every Indian child." data-hi="भारत का सबसे उन्नत शिक्षा मंच। हर भारतीय बच्चे के लिए ❤️ से बनाया।">India's most advanced education platform for children. Designed with ❤️ for every Indian child.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="learn.html">Learn</a>
+        <a href="games.html">Games</a>
+        <a href="creative.html">Creative</a>
+        <a href="health.html">Health</a>
+      </div>
+      <div>
+        <h4>More</h4>
+        <a href="stories.html">Stories</a>
+        <a href="career.html">Career</a>
+        <a href="daily.html">Daily Plan</a>
+        <a href="parents.html">Parents</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="auth.html">Login / Sign Up</a>
+        <a href="#" onclick="showToast('Feedback sent! Thank you 🙏');return false;">Feedback</a>
+        <a href="#" onclick="showToast('Help is on the way!');return false;">Help</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;opacity:.6;">© 2025 DevEdu India. Made with ❤️ for every child in India 🇮🇳</p>
+  </footer>
+
+  <!-- ═══════  AI CHAT WIDGET  ═══════ -->
+  <button class="ai-chat-toggle" aria-label="Open AI Chat">🤖</button>
+  <div class="ai-chat hidden">
+    <div class="ai-chat-header">
+      <span>🤖 Guru — AI Buddy</span>
+      <button class="ai-chat-close" aria-label="Close">✕</button>
+    </div>
+    <div class="ai-chat-messages"></div>
+    <div class="ai-chat-input">
+      <input type="text" placeholder="Ask me anything…" />
+      <button>Send</button>
+    </div>
+  </div>
+
+  <!-- ═══════  SETTINGS PANEL  ═══════ -->
+  <div class="settings-overlay"></div>
+  <div class="settings-panel">
+    <div class="settings-header">
+      <h3>⚙️ Settings</h3>
+      <button data-close-settings class="icon-btn">✕</button>
+    </div>
+    <div class="settings-body">
+      <div class="setting-item">
+        <span>🌙 Dark Mode</span>
+        <button data-toggle-dark class="toggle-btn">Off</button>
+      </div>
+      <div class="setting-item">
+        <span>📖 Dyslexia Font</span>
+        <button data-toggle-dyslexia class="toggle-btn">Off</button>
+      </div>
+      <div class="setting-item">
+        <span>🎯 High Contrast</span>
+        <button data-toggle-contrast class="toggle-btn">Off</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevEdu - Daily Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Hind:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          <div class="brand-badge"></div>
+          <div>
+            <div>DevEdu</div>
+            <small class="i18n" data-en="Daily Plan" data-hi="दैनिक योजना">Daily Plan</small>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="i18n" data-en="Home" data-hi="होम">Home</a>
+          <a href="learn.html" class="i18n" data-en="Syllabus" data-hi="पाठ्यक्रम">Syllabus</a>
+          <a href="life.html" class="i18n" data-en="Life Skills" data-hi="जीवन कौशल">Life Skills</a>
+          <a href="games.html" class="i18n" data-en="Games" data-hi="खेल">Games</a>
+          <a href="daily.html" class="i18n" data-en="Daily Plan" data-hi="दैनिक योजना">Daily Plan</a>
+          <a href="parents.html" class="i18n" data-en="Parents" data-hi="अभिभावक">Parents</a>
+          <a href="auth.html" class="i18n" data-en="Login" data-hi="लॉगिन">Login</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="button secondary" data-lang="en">English</button>
+          <button class="button secondary" data-lang="hi">हिंदी</button>
+          <button class="button i18n" data-action="go-learn" data-en="Start" data-hi="शुरू करें">Start</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container section">
+      <div class="profile-bar">
+        <div class="card">
+          <h3 class="i18n" data-en="Learner Profile" data-hi="लर्नर प्रोफाइल">Learner Profile</h3>
+          <select data-profile-select>
+            <option value="Aarav">Aarav</option>
+            <option value="Anaya">Anaya</option>
+            <option value="Vihaan">Vihaan</option>
+          </select>
+        </div>
+        <div class="card">
+          <h3 class="i18n" data-en="AI Focus" data-hi="एआई फोकस">AI Focus</h3>
+          <p data-personal="greeting">Hi learner! Today we will focus on your goal.</p>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="ai-companion">
+          <div class="ai-bubble">
+            <h2 class="i18n" data-en="Adaptive Daily Trail" data-hi="एडाप्टिव दैनिक ट्रेल">Adaptive Daily Trail</h2>
+            <p data-personal="encouragement">I brought examples you love.</p>
+            <p data-personal="style">Your learning style: Visual.</p>
+            <div class="tag-row">
+              <span class="tag i18n" data-en="Balanced routine" data-hi="संतुलित रूटीन">Balanced routine</span>
+              <span class="tag i18n" data-en="Micro breaks" data-hi="माइक्रो ब्रेक">Micro breaks</span>
+              <span class="tag i18n" data-en="Revision focus" data-hi="रिविजन फोकस">Revision focus</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Update profile" data-hi="प्रोफाइल अपडेट">Update profile</h3>
+            <div class="profile-form">
+              <input data-new-profile placeholder="Add new learner name" />
+              <button class="button secondary i18n" data-add-profile data-en="Save name" data-hi="नाम सेव करें">Save name</button>
+              <input data-profile-field="nickname" placeholder="Nickname" />
+              <input data-profile-field="goal" placeholder="Learning goal" />
+              <input data-profile-field="favorite" placeholder="Favorite topic" />
+              <select data-profile-field="style">
+                <option value="Visual">Visual</option>
+                <option value="Play">Play</option>
+                <option value="Story">Story</option>
+                <option value="Debate">Debate</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="i18n" data-en="Today's Plan" data-hi="आज की योजना">Today's Plan</h2>
+        <div class="tiles-grid">
+          <div class="big-tile" data-progress-item="plan-math">
+            <div class="i18n" data-en="Math: Fractions mini quest" data-hi="गणित: भिन्न मिनी क्वेस्ट">Math: Fractions mini quest</div>
+            <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+          </div>
+          <div class="big-tile" data-progress-item="plan-science">
+            <div class="i18n" data-en="Science: Water cycle lab" data-hi="विज्ञान: जल चक्र लैब">Science: Water cycle lab</div>
+            <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+          </div>
+          <div class="big-tile" data-progress-item="plan-language">
+            <div class="i18n" data-en="Language: Story reading" data-hi="भाषा: कहानी पठन">Language: Story reading</div>
+            <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+          </div>
+          <div class="big-tile" data-progress-item="plan-life">
+            <div class="i18n" data-en="Life skill: Kindness mission" data-hi="जीवन कौशल: दयालु मिशन">Life skill: Kindness mission</div>
+            <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="i18n" data-en="Breaks and Well-being" data-hi="ब्रेक और वेलबीइंग">Breaks and Well-being</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="i18n" data-en="Movement" data-hi="मूवमेंट">Movement</h3>
+            <p class="i18n" data-en="5-minute stretching + dance" data-hi="5 मिनट स्ट्रेचिंग + डांस">5-minute stretching + dance</p>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Mindfulness" data-hi="माइंडफुलनेस">Mindfulness</h3>
+            <p class="i18n" data-en="60-second breathing reset" data-hi="60 सेकंड सांस रीसेट">60-second breathing reset</p>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Outdoor" data-hi="आउटडोर">Outdoor</h3>
+            <p class="i18n" data-en="Nature walk + observation" data-hi="नेचर वॉक + ऑब्ज़र्वेशन">Nature walk + observation</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="i18n" data-en="Routine Resources" data-hi="रूटीन संसाधन">Routine Resources</h2>
+        <p class="i18n" data-en="Short routines and focus tips from approved sources." data-hi="अनुमोदित स्रोतों से छोटे रूटीन और फोकस टिप्स।">
+          Short routines and focus tips from approved sources.
+        </p>
+        <div class="resource-grid" data-resource-list="daily-routine"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="i18n" data-en="AI plans are adapted daily for each learner." data-hi="एआई प्लान हर लर्नर के लिए रोज़ बदलता है।">AI plans are adapted daily for each learner.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

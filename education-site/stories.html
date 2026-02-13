@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stories — DevEdu India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topnav glass">
+    <div class="nav-left"><button class="hamburger">☰</button><a href="index.html" class="brand-badge">🎓 DevEdu India</a></div>
+    <div class="nav-links"><a href="index.html">Home</a><a href="learn.html">Learn</a><a href="games.html">Games</a><a href="life.html">Life Skills</a><a href="creative.html">Creative</a><a href="health.html">Health</a><a href="career.html">Career</a><a href="stories.html" class="active">Stories</a><a href="daily.html">Daily Plan</a><a href="parents.html">Parents</a></div>
+    <div class="nav-right"><button data-theme-toggle class="icon-btn">🌙</button><button data-open-settings class="icon-btn">⚙️</button></div>
+  </nav>
+  <div class="mobile-drawer"><button class="drawer-close">✕</button><a href="index.html">🏠 Home</a><a href="learn.html">📚 Learn</a><a href="games.html">🎮 Games</a><a href="life.html">💡 Life Skills</a><a href="creative.html">🎨 Creative</a><a href="health.html">🧘 Health</a><a href="career.html">🗺️ Career</a><a href="stories.html">📖 Stories</a><a href="daily.html">📅 Daily Plan</a><a href="parents.html">👪 Parents</a></div>
+
+  <section class="control-bar glass">
+    <div class="control-group"><label>Profile</label><select data-profile-select></select></div>
+    <div class="control-group"><button data-lang="en" class="button small">EN</button><button data-lang="hi" class="button small secondary">हिंदी</button></div>
+    <div class="control-group"><button data-age="3-7" class="button small secondary">3-7</button><button data-age="8-12" class="button small">8-12</button><button data-age="13-18" class="button small secondary">13-18</button></div>
+  </section>
+
+  <section class="xp-section"><div class="xp-bar"><div class="xp-fill"></div></div><div class="xp-info"><span class="xp-badge">⭐ Level <span class="xp-level">1</span></span><span class="xp-text">0/100 XP</span><span class="xp-badge">🔥 <span class="streak-count">0</span></span></div></section>
+
+  <section class="card glass reveal" style="text-align:center;">
+    <h1 class="i18n" data-en="📖 Indian Stories & Tales" data-hi="📖 भारतीय कहानियां और किस्से">📖 Indian Stories & Tales</h1>
+    <p class="i18n" data-en="Timeless wisdom from Panchatantra, Birbal, and Indian traditions. Listen or read!" data-hi="पंचतंत्र, बीरबल और भारतीय परंपराओं की कालजयी बुद्धि। सुनें या पढ़ें!">Timeless wisdom from Indian traditions!</p>
+  </section>
+
+  <!-- STORY READER -->
+  <section class="card reveal story-reader" style="text-align:center;">
+    <div style="font-size:3rem;margin-bottom:.5rem;">📚</div>
+    <h2 class="story-title" style="font-size:1.5rem;"></h2>
+    <p class="story-content" style="font-size:1.1rem;line-height:1.8;text-align:left;margin:1rem 0;padding:1rem;background:var(--glass-bg);border-radius:12px;"></p>
+    <p class="story-moral" style="font-weight:700;color:var(--primary);font-size:1.1rem;"></p>
+    <div style="display:flex;gap:.5rem;justify-content:center;margin-top:1rem;flex-wrap:wrap;">
+      <button id="storyPrev" class="button secondary">⬅️ Previous</button>
+      <button id="storyVoice" class="button primary">🔊 Listen</button>
+      <button id="storyNext" class="button secondary">Next ➡️</button>
+    </div>
+    <p class="story-count" style="margin-top:.5rem;opacity:.6;"></p>
+  </section>
+
+  <!-- STORY COLLECTION -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="📚 Story Collection" data-hi="📚 कहानी संग्रह">📚 Story Collection</h2>
+    <div class="main-grid" style="margin-top:1rem;">
+      <div class="feature-card mini" data-age-group="3-7">
+        <span class="feature-icon">🐢</span>
+        <h3 class="i18n" data-en="The Clever Crow" data-hi="चतुर कौआ">The Clever Crow</h3>
+        <p class="i18n" data-en="A thirsty crow uses intelligence to drink water from a pot." data-hi="एक प्यासा कौआ बुद्धि से पानी पीता है।">Intelligence solves problems.</p>
+      </div>
+      <div class="feature-card mini" data-age-group="3-7">
+        <span class="feature-icon">🦁</span>
+        <h3 class="i18n" data-en="The Lion and the Mouse" data-hi="शेर और चूहा">The Lion and the Mouse</h3>
+        <p class="i18n" data-en="Even the smallest friend can make the biggest difference." data-hi="छोटे दोस्त भी बड़ा फ़र्क कर सकते हैं।">Small friends, big help.</p>
+      </div>
+      <div class="feature-card mini" data-age-group="8-12">
+        <span class="feature-icon">👑</span>
+        <h3 class="i18n" data-en="Birbal's Wisdom" data-hi="बीरबल की बुद्धि">Birbal's Wisdom</h3>
+        <p class="i18n" data-en="Emperor Akbar's clever minister solves impossible problems." data-hi="अकबर के चतुर मंत्री असंभव समस्याएं हल करते हैं।">Wisdom beats wealth.</p>
+      </div>
+      <div class="feature-card mini" data-age-group="8-12">
+        <span class="feature-icon">🪵</span>
+        <h3 class="i18n" data-en="Unity of Sticks" data-hi="लकड़ियों की एकता">Unity of Sticks</h3>
+        <p class="i18n" data-en="A father teaches his fighting sons the power of unity." data-hi="एक पिता अपने लड़ते बेटों को एकता की शक्ति सिखाता है।">United we stand.</p>
+      </div>
+      <div class="feature-card mini" data-age-group="13-18">
+        <span class="feature-icon">🙏</span>
+        <h3 class="i18n" data-en="Vivekananda's Courage" data-hi="विवेकानंद का साहस">Vivekananda's Courage</h3>
+        <p class="i18n" data-en="How one speech changed how the world saw India." data-hi="एक भाषण ने दुनिया की भारत के प्रति सोच कैसे बदली।">Courage changes the world.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDIAN HERITAGE -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🏛️ Indian Heritage" data-hi="🏛️ भारतीय विरासत">🏛️ Indian Heritage</h2>
+    <div class="main-grid" style="margin-top:1rem;">
+      <div class="feature-card mini">
+        <span class="feature-icon">🎪</span>
+        <h3>Festivals</h3>
+        <p>Diwali, Holi, Eid, Christmas, Pongal, Baisakhi, Onam, Bihu — India celebrates together! 🇮🇳</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🏛️</span>
+        <h3>Monuments</h3>
+        <p>Taj Mahal, Red Fort, Qutub Minar, Konark Sun Temple, Hampi — architectural marvels!</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🎵</span>
+        <h3>Music & Dance</h3>
+        <p>Bharatanatyam, Kathak, Odissi, Carnatic, Hindustani — living traditions of art.</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🌏</span>
+        <h3>Languages</h3>
+        <p>22 official languages, 1000+ dialects! Hindi, Tamil, Bengali, Telugu, Marathi & more.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card reveal"><h2>🏆 Achievements</h2><div class="achievement-grid"></div></section>
+
+  <footer><p style="text-align:center;">© 2025 DevEdu India 🇮🇳</p></footer>
+
+  <button class="ai-chat-toggle">🤖</button>
+  <div class="ai-chat hidden"><div class="ai-chat-header"><span>🤖 Guru</span><button class="ai-chat-close">✕</button></div><div class="ai-chat-messages"></div><div class="ai-chat-input"><input type="text" placeholder="Ask me anything…" /><button>Send</button></div></div>
+  <div class="settings-overlay"></div>
+  <div class="settings-panel"><div class="settings-header"><h3>⚙️ Settings</h3><button data-close-settings class="icon-btn">✕</button></div><div class="settings-body"><div class="setting-item"><span>🌙 Dark Mode</span><button data-toggle-dark class="toggle-btn">Off</button></div><div class="setting-item"><span>📖 Dyslexia Font</span><button data-toggle-dyslexia class="toggle-btn">Off</button></div><div class="setting-item"><span>🎯 High Contrast</span><button data-toggle-contrast class="toggle-btn">Off</button></div></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

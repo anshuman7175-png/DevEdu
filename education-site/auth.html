@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — DevEdu India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topnav glass">
+    <div class="nav-left"><button class="hamburger">☰</button><a href="index.html" class="brand-badge">🎓 DevEdu India</a></div>
+    <div class="nav-links"><a href="index.html">Home</a><a href="learn.html">Learn</a><a href="games.html">Games</a><a href="life.html">Life Skills</a><a href="creative.html">Creative</a><a href="health.html">Health</a><a href="career.html">Career</a><a href="stories.html">Stories</a><a href="daily.html">Daily Plan</a><a href="parents.html">Parents</a></div>
+    <div class="nav-right"><button data-theme-toggle class="icon-btn">🌙</button></div>
+  </nav>
+  <div class="mobile-drawer"><button class="drawer-close">✕</button><a href="index.html">🏠 Home</a><a href="learn.html">📚 Learn</a><a href="games.html">🎮 Games</a><a href="life.html">💡 Life Skills</a><a href="creative.html">🎨 Creative</a><a href="health.html">🧘 Health</a><a href="career.html">🗺️ Career</a><a href="stories.html">📖 Stories</a><a href="daily.html">📅 Daily Plan</a><a href="parents.html">👪 Parents</a></div>
+
+  <section style="max-width:420px;margin:4rem auto;padding:0 1rem;">
+    <div class="card glass" style="text-align:center;">
+      <div style="font-size:4rem;margin-bottom:1rem;">🎓</div>
+      <h1 class="i18n" data-en="Welcome to DevEdu India" data-hi="DevEdu India में आपका स्वागत है">Welcome to DevEdu India</h1>
+      <p class="i18n" data-en="Login to save your progress across devices." data-hi="अपनी प्रगति सेव करने के लिए लॉगिन करें।">Login to save your progress.</p>
+
+      <div style="margin-top:2rem;text-align:left;">
+        <label class="i18n" data-en="Email or Phone" data-hi="ईमेल या फोन">Email or Phone</label>
+        <input type="text" id="loginEmail" placeholder="name@example.com" style="width:100%;padding:.7rem;border-radius:10px;border:1px solid var(--border);margin:.4rem 0 1rem;font-size:1rem;" />
+
+        <label class="i18n" data-en="Password" data-hi="पासवर्ड">Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" style="width:100%;padding:.7rem;border-radius:10px;border:1px solid var(--border);margin:.4rem 0 1rem;font-size:1rem;" />
+
+        <button class="button primary" style="width:100%;padding:.8rem;font-size:1.1rem;margin-top:.5rem;" onclick="showToast('Login successful! (Demo mode)','success');setTimeout(()=>window.location.href='index.html',1000);">
+          <span class="i18n" data-en="Login" data-hi="लॉगिन">Login</span>
+        </button>
+
+        <div style="display:flex;align-items:center;gap:.5rem;margin:1.5rem 0;">
+          <hr style="flex:1;border:none;border-top:1px solid var(--border);" />
+          <span style="opacity:.5;">or</span>
+          <hr style="flex:1;border:none;border-top:1px solid var(--border);" />
+        </div>
+
+        <button class="button" style="width:100%;padding:.7rem;background:#fff;border:1px solid var(--border);font-size:1rem;cursor:pointer;" onclick="showToast('Google login (Demo mode)','success');setTimeout(()=>window.location.href='index.html',1000);">
+          🔵 Continue with Google
+        </button>
+
+        <p style="text-align:center;margin-top:1.5rem;opacity:.6;" class="i18n" data-en="Don't have an account? Just start using DevEdu! Everything is saved locally." data-hi="खाता नहीं है? बस DevEdu का उपयोग शुरू करें! सब कुछ लोकल सेव होता है।">Don't have an account? Just start using DevEdu!</p>
+
+        <a href="index.html" class="button secondary" style="width:100%;text-align:center;margin-top:1rem;display:block;">
+          <span class="i18n" data-en="← Back to Learning" data-hi="← सीखने पर वापस जाएं">← Back to Learning</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- HELP -->
+    <div class="card" style="margin-top:1.5rem;">
+      <h3 class="i18n" data-en="🔒 Your Data is Safe" data-hi="🔒 आपका डेटा सुरक्षित है">🔒 Your Data is Safe</h3>
+      <p class="i18n" data-en="DevEdu stores all learning data locally on your device. No data is sent to any server. Your child's privacy is our top priority." data-hi="DevEdu सभी शिक्षा डेटा आपके डिवाइस पर लोकली स्टोर करता है। कोई डेटा किसी सर्वर को नहीं भेजा जाता। आपके बच्चे की गोपनीयता हमारी सर्वोच्च प्राथमिकता है।">All data is stored locally. Your child's privacy is our priority.</p>
+    </div>
+
+    <div class="card" style="margin-top:1rem;">
+      <h3>📦 Resources</h3>
+      <div class="resource-grid" data-resource-list="auth-support"></div>
+    </div>
+  </section>
+
+  <footer><p style="text-align:center;">© 2025 DevEdu India 🇮🇳</p></footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

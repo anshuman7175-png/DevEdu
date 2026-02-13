@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Games — DevEdu India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="topnav glass">
+    <div class="nav-left"><button class="hamburger">☰</button><a href="index.html" class="brand-badge">🎓 DevEdu India</a></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="learn.html">Learn</a><a href="games.html" class="active">Games</a><a href="life.html">Life Skills</a><a href="creative.html">Creative</a><a href="health.html">Health</a><a href="career.html">Career</a><a href="stories.html">Stories</a><a href="daily.html">Daily Plan</a><a href="parents.html">Parents</a>
+    </div>
+    <div class="nav-right"><button data-theme-toggle class="icon-btn">🌙</button><button data-open-settings class="icon-btn">⚙️</button></div>
+  </nav>
+  <div class="mobile-drawer"><button class="drawer-close">✕</button><a href="index.html">🏠 Home</a><a href="learn.html">📚 Learn</a><a href="games.html">🎮 Games</a><a href="life.html">💡 Life Skills</a><a href="creative.html">🎨 Creative</a><a href="health.html">🧘 Health</a><a href="career.html">🗺️ Career</a><a href="stories.html">📖 Stories</a><a href="daily.html">📅 Daily Plan</a><a href="parents.html">👪 Parents</a></div>
+
+  <!-- Controls -->
+  <section class="control-bar glass">
+    <div class="control-group"><label>Profile</label><select data-profile-select></select></div>
+    <div class="control-group"><button data-lang="en" class="button small">EN</button><button data-lang="hi" class="button small secondary">हिंदी</button></div>
+    <div class="control-group"><button data-age="3-7" class="button small secondary">3-7</button><button data-age="8-12" class="button small">8-12</button><button data-age="13-18" class="button small secondary">13-18</button></div>
+  </section>
+
+  <section class="xp-section"><div class="xp-bar"><div class="xp-fill"></div></div><div class="xp-info"><span class="xp-badge">⭐ Level <span class="xp-level">1</span></span><span class="xp-text">0/100 XP</span><span class="xp-badge">🔥 <span class="streak-count">0</span></span></div></section>
+
+  <!-- HEADER -->
+  <section class="card glass reveal" style="text-align:center;">
+    <h1 class="i18n" data-en="🎮 Games & Quizzes" data-hi="🎮 खेल और क्विज़">🎮 Games & Quizzes</h1>
+    <p class="i18n" data-en="Learn while playing! Every game earns you XP." data-hi="खेलते हुए सीखें! हर खेल से XP मिलेगा।">Learn while playing!</p>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="card reveal" id="quiz">
+    <h2 class="i18n" data-en="⚡ Knowledge Quiz" data-hi="⚡ ज्ञान क्विज़">⚡ Knowledge Quiz</h2>
+    <div class="progress"><span></span></div>
+    <p class="quiz-question" style="font-size:1.2rem;font-weight:600;margin:1rem 0;"></p>
+    <div class="quiz-options"></div>
+    <p class="quiz-score" style="margin-top:.5rem;font-weight:600;"></p>
+  </section>
+
+  <!-- MATH CHALLENGE -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🔢 Math Speed Challenge" data-hi="🔢 गणित स्पीड चैलेंज">🔢 Math Speed Challenge</h2>
+    <p class="i18n" data-en="Solve as many as you can in 60 seconds!" data-hi="60 सेकंड में जितने हो सकें हल करें!">Solve as many as you can in 60 seconds!</p>
+    <div id="mathGame" style="margin-top:1rem;">
+      <div id="mathProblem" style="font-size:2rem;font-weight:800;text-align:center;margin:1rem 0;">Press Start!</div>
+      <div style="display:flex;gap:.5rem;justify-content:center;align-items:center;">
+        <input id="mathAnswer" type="number" placeholder="?" style="width:100px;padding:.5rem;font-size:1.2rem;border-radius:8px;border:2px solid var(--border);text-align:center;" />
+        <button id="mathSubmit" class="button primary">Check</button>
+      </div>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:1rem;">
+        <button id="mathStart" class="button secondary">▶️ Start</button>
+        <span id="mathTimer" style="font-size:1.5rem;font-weight:700;">60s</span>
+        <span id="mathScore" style="font-size:1.5rem;font-weight:700;color:var(--success);">0</span>
+      </div>
+    </div>
+  </section>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let mathA, mathB, mathOp, mathAns, score=0, timer=60, interval;
+    const problem=document.getElementById('mathProblem'), ans=document.getElementById('mathAnswer'),
+          submit=document.getElementById('mathSubmit'), start=document.getElementById('mathStart'),
+          timerEl=document.getElementById('mathTimer'), scoreEl=document.getElementById('mathScore');
+    function gen() {
+      const ops=['+','-','×']; mathOp=ops[Math.floor(Math.random()*3)];
+      mathA=Math.floor(Math.random()*20)+1; mathB=Math.floor(Math.random()*15)+1;
+      if(mathOp==='-'&&mathB>mathA)[mathA,mathB]=[mathB,mathA];
+      mathAns=mathOp==='+'?mathA+mathB:mathOp==='-'?mathA-mathB:mathA*mathB;
+      problem.textContent=`${mathA} ${mathOp} ${mathB} = ?`; ans.value=''; ans.focus();
+    }
+    function check() {
+      if(parseInt(ans.value)===mathAns){score++;scoreEl.textContent=score;gen();}
+      else{ans.style.borderColor='#e4572e';setTimeout(()=>ans.style.borderColor='var(--border)',300);}
+    }
+    if(start) start.addEventListener('click',()=>{score=0;timer=60;scoreEl.textContent=0;gen();clearInterval(interval);interval=setInterval(()=>{timer--;timerEl.textContent=timer+'s';if(timer<=0){clearInterval(interval);problem.textContent=`Time's up! Score: ${score}`;if(typeof awardXP==='function')awardXP(score*2,'Math challenge score: '+score);}},1000);});
+    if(submit) submit.addEventListener('click',check);
+    if(ans) ans.addEventListener('keydown',e=>{if(e.key==='Enter')check();});
+  });
+  </script>
+
+  <!-- WORD SCRAMBLE -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="📝 Word Scramble" data-hi="📝 शब्द पहेली">📝 Word Scramble</h2>
+    <p class="i18n" data-en="Unscramble the letters to form a word!" data-hi="अक्षरों को सही क्रम में लगाकर शब्द बनाएं!">Unscramble the letters!</p>
+    <div id="wordGame" style="margin-top:1rem;text-align:center;">
+      <div id="scrambledWord" style="font-size:2.5rem;font-weight:800;letter-spacing:.5rem;margin:1rem 0;color:var(--primary);"></div>
+      <input id="wordAnswer" placeholder="Your answer…" style="padding:.6rem 1rem;font-size:1.1rem;border-radius:8px;border:2px solid var(--border);width:200px;text-align:center;" />
+      <button id="wordCheck" class="button primary" style="margin-left:.5rem;">Check</button>
+      <button id="wordNext" class="button secondary" style="margin-left:.5rem;">Next</button>
+      <p id="wordHint" style="margin-top:.5rem;opacity:.6;"></p>
+    </div>
+  </section>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const words=[{w:'PLANET',h:'We live on one'},{w:'RIVER',h:'Water flows in it'},{w:'MOUNTAIN',h:'Very tall land'},{w:'ELEPHANT',h:'Biggest land animal'},{w:'FREEDOM',h:'India got it in 1947'},{w:'SCIENCE',h:'Study of nature'},{w:'SCHOOL',h:'Where you learn'},{w:'GARDEN',h:'Plants grow here'},{w:'MANGO',h:'King of fruits'},{w:'PEACOCK',h:'National bird of India'}];
+    let ci=0;
+    function scramble(s){return s.split('').sort(()=>Math.random()-.5).join('');}
+    function show(){const w=words[ci%words.length];document.getElementById('scrambledWord').textContent=scramble(w.w);document.getElementById('wordHint').textContent='Hint: '+w.h;document.getElementById('wordAnswer').value='';}
+    document.getElementById('wordCheck')?.addEventListener('click',()=>{const a=document.getElementById('wordAnswer').value.trim().toUpperCase();if(a===words[ci%words.length].w){if(typeof showToast==='function')showToast('Correct! 🎉','success');if(typeof awardXP==='function')awardXP(10,'Word scramble!');ci++;show();}else{document.getElementById('wordAnswer').style.borderColor='#e4572e';setTimeout(()=>document.getElementById('wordAnswer').style.borderColor='var(--border)',400);}});
+    document.getElementById('wordNext')?.addEventListener('click',()=>{ci++;show();});
+    document.getElementById('wordAnswer')?.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('wordCheck')?.click();});
+    show();
+  });
+  </script>
+
+  <!-- MEMORY MATCH -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🧠 Memory Match" data-hi="🧠 मेमोरी मैच">🧠 Memory Match</h2>
+    <p class="i18n" data-en="Match the pairs! Train your memory." data-hi="जोड़ी मिलाएं! याददाश्त बढ़ाएं।">Match the pairs!</p>
+    <div id="memoryGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;max-width:400px;margin:1rem auto;"></div>
+    <button id="memoryReset" class="button secondary" style="display:block;margin:1rem auto;">🔄 Reset</button>
+  </section>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const emojis=['🍎','🍌','🌺','🦋','🐘','🎵','📚','⭐'];
+    let cards=[...emojis,...emojis], flipped=[], matched=[], locked=false;
+    const grid=document.getElementById('memoryGrid');
+    function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+    function render(){grid.innerHTML='';shuffle(cards);matched=[];flipped=[];cards.forEach((e,i)=>{const c=document.createElement('div');c.style.cssText='aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:var(--glass-bg);border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:all .3s;';c.dataset.idx=i;c.textContent='?';c.addEventListener('click',()=>flip(c,i));grid.appendChild(c);});}
+    function flip(c,i){if(locked||flipped.includes(i)||matched.includes(i))return;c.textContent=cards[i];c.style.background='var(--primary)';c.style.color='#fff';flipped.push(i);
+      if(flipped.length===2){locked=true;const[a,b]=flipped;if(cards[a]===cards[b]){matched.push(a,b);flipped=[];locked=false;if(matched.length===cards.length){if(typeof showToast==='function')showToast('All matched! 🎉','success');if(typeof awardXP==='function')awardXP(20,'Memory match!');}}
+      else{setTimeout(()=>{grid.children[a].textContent='?';grid.children[a].style.background='var(--glass-bg)';grid.children[a].style.color='';grid.children[b].textContent='?';grid.children[b].style.background='var(--glass-bg)';grid.children[b].style.color='';flipped=[];locked=false;},800);}}}
+    document.getElementById('memoryReset')?.addEventListener('click',render);
+    render();
+  });
+  </script>
+
+  <!-- GAME RESOURCES -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="📦 Game Resources" data-hi="📦 खेल संसाधन">📦 Game Resources</h2>
+    <div class="resource-grid" data-resource-list="games-3-7" data-age-group="3-7"></div>
+    <div class="resource-grid" data-resource-list="games-8-12" data-age-group="8-12"></div>
+    <div class="resource-grid" data-resource-list="games-13-18" data-age-group="13-18"></div>
+  </section>
+
+  <!-- Achievements -->
+  <section class="card reveal"><h2>🏆 Achievements</h2><div class="achievement-grid"></div></section>
+
+  <footer><p style="text-align:center;">© 2025 DevEdu India 🇮🇳</p></footer>
+
+  <button class="ai-chat-toggle">🤖</button>
+  <div class="ai-chat hidden"><div class="ai-chat-header"><span>🤖 Guru</span><button class="ai-chat-close">✕</button></div><div class="ai-chat-messages"></div><div class="ai-chat-input"><input type="text" placeholder="Ask me anything…" /><button>Send</button></div></div>
+  <div class="settings-overlay"></div>
+  <div class="settings-panel"><div class="settings-header"><h3>⚙️ Settings</h3><button data-close-settings class="icon-btn">✕</button></div><div class="settings-body"><div class="setting-item"><span>🌙 Dark Mode</span><button data-toggle-dark class="toggle-btn">Off</button></div><div class="setting-item"><span>📖 Dyslexia Font</span><button data-toggle-dyslexia class="toggle-btn">Off</button></div><div class="setting-item"><span>🎯 High Contrast</span><button data-toggle-contrast class="toggle-btn">Off</button></div></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

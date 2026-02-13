@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Explorer — DevEdu India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topnav glass">
+    <div class="nav-left"><button class="hamburger">☰</button><a href="index.html" class="brand-badge">🎓 DevEdu India</a></div>
+    <div class="nav-links"><a href="index.html">Home</a><a href="learn.html">Learn</a><a href="games.html">Games</a><a href="life.html">Life Skills</a><a href="creative.html">Creative</a><a href="health.html">Health</a><a href="career.html" class="active">Career</a><a href="stories.html">Stories</a><a href="daily.html">Daily Plan</a><a href="parents.html">Parents</a></div>
+    <div class="nav-right"><button data-theme-toggle class="icon-btn">🌙</button><button data-open-settings class="icon-btn">⚙️</button></div>
+  </nav>
+  <div class="mobile-drawer"><button class="drawer-close">✕</button><a href="index.html">🏠 Home</a><a href="learn.html">📚 Learn</a><a href="games.html">🎮 Games</a><a href="life.html">💡 Life Skills</a><a href="creative.html">🎨 Creative</a><a href="health.html">🧘 Health</a><a href="career.html">🗺️ Career</a><a href="stories.html">📖 Stories</a><a href="daily.html">📅 Daily Plan</a><a href="parents.html">👪 Parents</a></div>
+
+  <section class="control-bar glass">
+    <div class="control-group"><label>Profile</label><select data-profile-select></select></div>
+    <div class="control-group"><button data-lang="en" class="button small">EN</button><button data-lang="hi" class="button small secondary">हिंदी</button></div>
+  </section>
+
+  <section class="xp-section"><div class="xp-bar"><div class="xp-fill"></div></div><div class="xp-info"><span class="xp-badge">⭐ Level <span class="xp-level">1</span></span><span class="xp-text">0/100 XP</span><span class="xp-badge">🔥 <span class="streak-count">0</span></span></div></section>
+
+  <section class="card glass reveal" style="text-align:center;">
+    <h1 class="i18n" data-en="🗺️ Career Explorer" data-hi="🗺️ करियर एक्सप्लोरर">🗺️ Career Explorer</h1>
+    <p class="i18n" data-en="Discover careers, understand what skills you need, and plan your future!" data-hi="करियर खोजें, जानें कौन से कौशल चाहिए, और भविष्य की योजना बनाएं!">Discover careers and plan your future!</p>
+  </section>
+
+  <!-- CAREER CARDS -->
+  <section class="main-grid reveal">
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">👨‍⚕️</div>
+      <h3>Doctor / Medical</h3>
+      <p class="i18n" data-en="Help people stay healthy. Study Biology, Chemistry in 11th & 12th. Give NEET exam." data-hi="लोगों को स्वस्थ रहने में मदद करें। 11वीं-12वीं में जीवविज्ञान, रसायन पढ़ें। NEET दें।">Help people stay healthy. NEET pathway.</p>
+      <div class="badge">Biology</div><div class="badge">Chemistry</div><div class="badge">NEET</div>
+    </div>
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">👩‍💻</div>
+      <h3>Software Engineer</h3>
+      <p class="i18n" data-en="Build apps, websites & AI. Learn Math, Programming, and give JEE or study CS." data-hi="ऐप्स, वेबसाइट और AI बनाएं। गणित, प्रोग्रामिंग सीखें। JEE दें या CS पढ़ें।">Build technology. JEE/CS pathway.</p>
+      <div class="badge">Math</div><div class="badge">Coding</div><div class="badge">JEE/CS</div>
+    </div>
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">👨‍🔬</div>
+      <h3>Scientist / Researcher</h3>
+      <p class="i18n" data-en="Discover new things! ISRO, DRDO, research labs. Strong in Math & Science." data-hi="नई चीज़ें खोजें! ISRO, DRDO, रिसर्च लैब। गणित और विज्ञान में मजबूत।">Discover new things! ISRO, DRDO pathway.</p>
+      <div class="badge">Science</div><div class="badge">Research</div><div class="badge">PhD</div>
+    </div>
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">👩‍🏫</div>
+      <h3>Teacher / Professor</h3>
+      <p class="i18n" data-en="Shape the future! Teach children, help them grow. B.Ed, M.Ed, NET exam." data-hi="भविष्य बनाएं! बच्चों को पढ़ाएं। B.Ed, M.Ed, NET परीक्षा।">Shape the future! B.Ed/NET pathway.</p>
+      <div class="badge">Education</div><div class="badge">B.Ed</div><div class="badge">NET</div>
+    </div>
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">⚖️</div>
+      <h3>Lawyer / Judge</h3>
+      <p class="i18n" data-en="Fight for justice! Study Law after 12th (5-year) or graduation (3-year). CLAT exam." data-hi="न्याय के लिए लड़ें! 12वीं के बाद Law पढ़ें। CLAT परीक्षा।">Fight for justice! CLAT pathway.</p>
+      <div class="badge">Law</div><div class="badge">CLAT</div><div class="badge">LLB</div>
+    </div>
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">🎨</div>
+      <h3>Designer / Artist</h3>
+      <p class="i18n" data-en="Create beautiful designs! NID, NIFT. Graphic design, UI/UX, fashion." data-hi="सुंदर डिज़ाइन बनाएं! NID, NIFT। ग्राफिक डिज़ाइन, UI/UX, फैशन।">Create beautiful designs! NID/NIFT.</p>
+      <div class="badge">Art</div><div class="badge">NID</div><div class="badge">NIFT</div>
+    </div>
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">🏏</div>
+      <h3>Sports / Athlete</h3>
+      <p class="i18n" data-en="Represent India! Cricket, hockey, badminton, wrestling. Start early, train hard." data-hi="भारत का प्रतिनिधित्व करें! क्रिकेट, हॉकी, बैडमिंटन। जल्दी शुरू करें।">Represent India in sports!</p>
+      <div class="badge">Fitness</div><div class="badge">Discipline</div><div class="badge">Dedication</div>
+    </div>
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">🎬</div>
+      <h3>Film / Media</h3>
+      <p class="i18n" data-en="Tell stories through films, journalism, content creation. FTII, Mass Communication." data-hi="फिल्म, पत्रकारिता, कंटेंट क्रिएशन से कहानियां बताएं। FTII।">Tell stories through media! FTII pathway.</p>
+      <div class="badge">Communication</div><div class="badge">Creative</div><div class="badge">FTII</div>
+    </div>
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">🏛️</div>
+      <h3>Civil Services (IAS/IPS)</h3>
+      <p class="i18n" data-en="Serve the nation! UPSC exam after graduation. District Collector, IPS officer." data-hi="राष्ट्र सेवा! ग्रेजुएशन के बाद UPSC परीक्षा। जिलाधिकारी, IPS अधिकारी।">Serve the nation! UPSC pathway.</p>
+      <div class="badge">UPSC</div><div class="badge">GK</div><div class="badge">Leadership</div>
+    </div>
+    <div class="card career-card">
+      <div style="font-size:3rem;text-align:center;">🚀</div>
+      <h3>Entrepreneur / Startup</h3>
+      <p class="i18n" data-en="Build your own company! Solve real problems. Business skills, innovation." data-hi="अपनी कंपनी बनाएं! असली समस्याएं हल करें। बिजनेस कौशल।">Build your own company!</p>
+      <div class="badge">Business</div><div class="badge">Innovation</div><div class="badge">Leadership</div>
+    </div>
+  </section>
+
+  <!-- CAREER QUIZ -->
+  <section class="card reveal" style="text-align:center;">
+    <h2 class="i18n" data-en="🎯 Career Interest Quiz" data-hi="🎯 करियर रुचि क्विज़">🎯 Career Interest Quiz</h2>
+    <p class="i18n" data-en="Answer these questions to discover careers that match your interests!" data-hi="इन सवालों के जवाब दें और अपनी रुचि के करियर खोजें!">Discover careers matching your interests!</p>
+    <div id="careerQuiz" style="margin-top:1rem;"></div>
+  </section>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const questions = [
+      { q: "What do you enjoy most?", options: ["Solving puzzles 🧩", "Helping people ❤️", "Creating art 🎨", "Leading teams 🏆", "Exploring nature 🌿"] },
+      { q: "Favorite school subject?", options: ["Math 🔢", "Science 🔬", "Languages 📝", "Social Studies 🌍", "Arts & Sports 🎭"] },
+      { q: "Dream weekend activity?", options: ["Coding a game 💻", "Reading books 📚", "Playing sports 🏏", "Drawing/Painting 🎨", "Volunteering 🤝"] },
+    ];
+    const answers = [];
+    let qi = 0;
+    const container = document.getElementById('careerQuiz');
+    function showQ() {
+      if (qi >= questions.length) { showResult(); return; }
+      const q = questions[qi];
+      container.innerHTML = `<h3 style="margin-bottom:1rem;">${q.q}</h3>` + q.options.map((o,i) => `<button class="button secondary" style="margin:.3rem;display:inline-block;" onclick="document.dispatchEvent(new CustomEvent('careerAnswer',{detail:${i}}))">${o}</button>`).join('');
+    }
+    document.addEventListener('careerAnswer', e => { answers.push(e.detail); qi++; showQ(); });
+    function showResult() {
+      const map = [['Software Engineer 💻','Scientist 🔬'],['Doctor 👨‍⚕️','Teacher 👩‍🏫'],['Designer 🎨','Film Maker 🎬'],['IAS Officer 🏛️','Entrepreneur 🚀'],['Scientist 🔬','Environmentalist 🌿']];
+      const counts = [0,0,0,0,0];
+      answers.forEach(a => counts[a]++);
+      const top = counts.indexOf(Math.max(...counts));
+      const career = map[top][Math.floor(Math.random()*2)];
+      container.innerHTML = `<div style="font-size:3rem;margin:1rem;">${career.split(' ').pop()}</div><h3>Your career match: ${career}</h3><p>This is just a suggestion — you can be anything you dream of! 🌟</p><button class="button primary" onclick="location.reload()">Try Again</button>`;
+      if(typeof awardXP==='function') awardXP(10, 'Career quiz completed!');
+    }
+    showQ();
+  });
+  </script>
+
+  <!-- SKILLS ROADMAP -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🛤️ Skills Roadmap" data-hi="🛤️ कौशल रोडमैप">🛤️ Skills Roadmap</h2>
+    <div class="main-grid" style="margin-top:1rem;">
+      <div class="feature-card mini"><span class="feature-icon">💬</span><h3>Communication</h3><p>Speaking, writing, presenting ideas clearly.</p></div>
+      <div class="feature-card mini"><span class="feature-icon">🧠</span><h3>Critical Thinking</h3><p>Analyzing problems, finding solutions logically.</p></div>
+      <div class="feature-card mini"><span class="feature-icon">🤝</span><h3>Teamwork</h3><p>Working with others toward a common goal.</p></div>
+      <div class="feature-card mini"><span class="feature-icon">💡</span><h3>Creativity</h3><p>Thinking outside the box, innovation.</p></div>
+      <div class="feature-card mini"><span class="feature-icon">💻</span><h3>Digital Literacy</h3><p>Using technology, coding, online safety.</p></div>
+      <div class="feature-card mini"><span class="feature-icon">🎯</span><h3>Goal Setting</h3><p>Planning ahead and staying focused.</p></div>
+    </div>
+  </section>
+
+  <section class="card reveal"><h2>🏆 Achievements</h2><div class="achievement-grid"></div></section>
+
+  <footer><p style="text-align:center;">© 2025 DevEdu India 🇮🇳</p></footer>
+
+  <button class="ai-chat-toggle">🤖</button>
+  <div class="ai-chat hidden"><div class="ai-chat-header"><span>🤖 Guru</span><button class="ai-chat-close">✕</button></div><div class="ai-chat-messages"></div><div class="ai-chat-input"><input type="text" placeholder="Ask about careers…" /><button>Send</button></div></div>
+  <div class="settings-overlay"></div>
+  <div class="settings-panel"><div class="settings-header"><h3>⚙️ Settings</h3><button data-close-settings class="icon-btn">✕</button></div><div class="settings-body"><div class="setting-item"><span>🌙 Dark Mode</span><button data-toggle-dark class="toggle-btn">Off</button></div><div class="setting-item"><span>📖 Dyslexia Font</span><button data-toggle-dyslexia class="toggle-btn">Off</button></div><div class="setting-item"><span>🎯 High Contrast</span><button data-toggle-contrast class="toggle-btn">Off</button></div></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

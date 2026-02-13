@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevEdu - AI Learning for Indian Students</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Hind:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          <div class="brand-badge"></div>
+          <div>
+            <div>DevEdu</div>
+            <small class="i18n" data-en="AI Learning for India" data-hi="भारत के लिए एआई लर्निंग">AI Learning for India</small>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="i18n" data-en="Home" data-hi="होम">Home</a>
+          <a href="learn.html" class="i18n" data-en="Syllabus" data-hi="पाठ्यक्रम">Syllabus</a>
+          <a href="life.html" class="i18n" data-en="Life Skills" data-hi="जीवन कौशल">Life Skills</a>
+          <a href="games.html" class="i18n" data-en="Games" data-hi="खेल">Games</a>
+          <a href="daily.html" class="i18n" data-en="Daily Plan" data-hi="दैनिक योजना">Daily Plan</a>
+          <a href="parents.html" class="i18n" data-en="Parents" data-hi="अभिभावक">Parents</a>
+          <a href="auth.html" class="i18n" data-en="Login" data-hi="लॉगिन">Login</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="button secondary" data-lang="en">English</button>
+          <button class="button secondary" data-lang="hi">हिंदी</button>
+          <button class="button i18n" data-action="go-learn" data-en="Start" data-hi="शुरू करें">Start</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="container">
+        <div class="profile-bar">
+          <div class="card">
+            <h3 class="i18n" data-en="Learner Profile" data-hi="लर्नर प्रोफाइल">Learner Profile</h3>
+            <select data-profile-select>
+              <option value="Aarav">Aarav</option>
+              <option value="Anaya">Anaya</option>
+              <option value="Vihaan">Vihaan</option>
+            </select>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Today" data-hi="आज">Today</h3>
+            <p class="i18n" data-en="3 new lessons + 1 kindness mission" data-hi="3 नए लेसन + 1 दयालु मिशन">3 new lessons + 1 kindness mission</p>
+          </div>
+        </div>
+      </section>
+      <section class="container hero">
+        <div class="hero-card fade-in">
+          <span class="badge i18n" data-en="AI Mentor + Indian Curriculum" data-hi="एआई मेंटर + भारतीय पाठ्यक्रम">AI Mentor + Indian Curriculum</span>
+          <h1 class="i18n" data-en="Playful, serious learning for ages 3-18" data-hi="3-18 उम्र के लिए खेल-खेल में गंभीर पढ़ाई">
+            Playful, serious learning for ages 3-18
+          </h1>
+          <p class="i18n" data-en="DevEdu blends every Indian board syllabus with life lessons, civic sense, and moral values. Kids learn through stories, challenges, and voice-guided practice in English or Hindi." data-hi="DevEdu हर भारतीय बोर्ड के पाठ्यक्रम को जीवन कौशल, नागरिक समझ और नैतिक मूल्यों के साथ जोड़ता है। बच्चे कहानियों, चुनौतियों और आवाज़ के साथ अंग्रेज़ी या हिंदी में सीखते हैं।">
+            DevEdu blends every Indian board syllabus with life lessons, civic sense, and moral values. Kids learn through stories, challenges, and voice-guided practice in English or Hindi.
+          </p>
+          <div class="chip-row">
+            <div class="chip i18n" data-en="CBSE + ICSE + State Boards" data-hi="CBSE + ICSE + राज्य बोर्ड">CBSE + ICSE + State Boards</div>
+            <div class="chip i18n" data-en="NEP-aligned" data-hi="NEP अनुरूप">NEP-aligned</div>
+            <div class="chip i18n" data-en="Parent dashboards" data-hi="अभिभावक डैशबोर्ड">Parent dashboards</div>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div>3-18</div>
+              <small class="i18n" data-en="Age Pathways" data-hi="उम्र पथ">Age Pathways</small>
+            </div>
+            <div class="stat">
+              <div>4,000+</div>
+              <small class="i18n" data-en="Micro Lessons" data-hi="माइक्रो लेसन">Micro Lessons</small>
+            </div>
+            <div class="stat">
+              <div>12</div>
+              <small class="i18n" data-en="Indian Languages" data-hi="भारतीय भाषाएं">Indian Languages</small>
+            </div>
+          </div>
+          <div class="age-toggle">
+            <button class="button secondary" data-age="3-7">3-7</button>
+            <button class="button secondary" data-age="8-12">8-12</button>
+            <button class="button secondary" data-age="13-18">13-18</button>
+          </div>
+        </div>
+        <div class="hero-card fade-in delay">
+          <h2 class="i18n" data-en="AI Companion that talks like a friendly teacher" data-hi="एआई साथी जो दोस्ताना शिक्षक जैसा बोले">
+            AI Companion that talks like a friendly teacher
+          </h2>
+          <p class="i18n" data-en="Switch between English and Hindi, choose an Indian voice, and get daily learning trails with stories, science experiments, and civic missions." data-hi="अंग्रेज़ी और हिंदी के बीच स्विच करें, भारतीय आवाज़ चुनें, और रोज़ाना सीखने का ट्रेल पाएं जिसमें कहानियां, विज्ञान प्रयोग और नागरिक मिशन हों।">
+            Switch between English and Hindi, choose an Indian voice, and get daily learning trails with stories, science experiments, and civic missions.
+          </p>
+          <div class="card">
+            <h3 class="i18n" data-en="Today's Trail" data-hi="आज का ट्रेल">Today's Trail</h3>
+            <ul>
+              <li class="i18n" data-en="Story: The River That Listened" data-hi="कहानी: वह नदी जो सुनती थी">Story: The River That Listened</li>
+              <li class="i18n" data-en="Science: Clean Water Experiment" data-hi="विज्ञान: साफ पानी का प्रयोग">Science: Clean Water Experiment</li>
+              <li class="i18n" data-en="Civic Mission: Respect the Queue" data-hi="नागरिक मिशन: कतार का सम्मान">Civic Mission: Respect the Queue</li>
+            </ul>
+          </div>
+          <button class="button i18n" data-action="open-trail" data-en="Open Learning Trail" data-hi="लर्निंग ट्रेल खोलें">Open Learning Trail</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="i18n" data-en="What makes DevEdu advanced?" data-hi="DevEdu को उन्नत क्या बनाता है?">What makes DevEdu advanced?</h2>
+          <div class="grid-3">
+            <div class="card">
+              <h3 class="i18n" data-en="Adaptive AI Coach" data-hi="अनुकूली एआई कोच">Adaptive AI Coach</h3>
+              <p class="i18n" data-en="Learns pace, suggests revision, and turns weak chapters into bite-sized missions." data-hi="पढ़ने की गति सीखता है, रिविजन सुझाता है, और कमजोर अध्यायों को छोटे मिशन में बदल देता है।">
+                Learns pace, suggests revision, and turns weak chapters into bite-sized missions.
+              </p>
+            </div>
+            <div class="card">
+              <h3 class="i18n" data-en="Board Sync" data-hi="बोर्ड सिंक">Board Sync</h3>
+              <p class="i18n" data-en="Auto-aligns with CBSE, ICSE, and State boards with weekly updates." data-hi="CBSE, ICSE और राज्य बोर्ड के साथ ऑटो-अलाइन और साप्ताहिक अपडेट।">
+                Auto-aligns with CBSE, ICSE, and State boards with weekly updates.
+              </p>
+            </div>
+            <div class="card">
+              <h3 class="i18n" data-en="Values + Civics" data-hi="मूल्य + नागरिकता">Values + Civics</h3>
+              <p class="i18n" data-en="Daily micro-lessons on empathy, honesty, digital safety, and civic sense." data-hi="सहानुभूति, ईमानदारी, डिजिटल सुरक्षा और नागरिक समझ के दैनिक माइक्रो-लेसन।">
+                Daily micro-lessons on empathy, honesty, digital safety, and civic sense.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="i18n" data-en="Inspired by global best practices" data-hi="वैश्विक बेस्ट प्रैक्टिस से प्रेरित">Inspired by global best practices</h2>
+          <p class="i18n" data-en="We take inspiration from short, motivating practice loops and mastery maps, then go deeper for Indian schools." data-hi="हम छोटे अभ्यास लूप और मास्टरी मैप जैसी बेहतरीन चीजों से प्रेरणा लेते हैं और भारतीय स्कूलों के लिए इसे गहरा बनाते हैं।">
+            We take inspiration from short, motivating practice loops and mastery maps, then go deeper for Indian schools.
+          </p>
+          <div class="grid-3">
+            <div class="card">
+              <h3 class="i18n" data-en="What we keep" data-hi="हम क्या रखते हैं">What we keep</h3>
+              <p class="i18n" data-en="Daily streaks, micro-lessons, instant feedback." data-hi="डेली स्ट्रीक, माइक्रो-लेसन, तुरंत फीडबैक।">Daily streaks, micro-lessons, instant feedback.</p>
+            </div>
+            <div class="card">
+              <h3 class="i18n" data-en="Where we go further" data-hi="हम आगे कैसे जाते हैं">Where we go further</h3>
+              <p class="i18n" data-en="Full CBSE/ICSE/State coverage, bilingual voice, life skills, civic sense." data-hi="CBSE/ICSE/State कवरेज, द्विभाषी आवाज़, जीवन कौशल, नागरिक समझ।">Full CBSE/ICSE/State coverage, bilingual voice, life skills, civic sense.</p>
+            </div>
+            <div class="card">
+              <h3 class="i18n" data-en="Gaps we address" data-hi="हम कौन सी कमी भरते हैं">Gaps we address</h3>
+              <p class="i18n" data-en="India-first syllabus sequencing, parent dashboards, offline activity bridges." data-hi="इंडिया-फर्स्ट सिलेबस क्रम, पैरेंट डैशबोर्ड, ऑफलाइन एक्टिविटी।">India-first syllabus sequencing, parent dashboards, offline activity bridges.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="i18n" data-en="Developmental Learning Path" data-hi="विकास आधारित लर्निंग पाथ">Developmental Learning Path</h2>
+          <p class="i18n" data-en="Built on how children grow: from play and senses to abstract thinking, in the right order." data-hi="बच्चों के विकास के अनुसार: खेल और इंद्रियों से लेकर अमूर्त सोच तक, सही क्रम में।">
+            Built on how children grow: from play and senses to abstract thinking, in the right order.
+          </p>
+          <div class="tiles-grid">
+            <div class="big-tile i18n" data-age-group="3-7" data-en="3-5: Play, senses, language basics" data-hi="3-5: खेल, इंद्रियां, भाषा की बुनियाद">3-5: Play, senses, language basics</div>
+            <div class="big-tile i18n" data-age-group="3-7" data-en="6-8: Reading, number sense, habits" data-hi="6-8: पठन, संख्या समझ, आदतें">6-8: Reading, number sense, habits</div>
+            <div class="big-tile i18n" data-age-group="8-12" data-en="9-12: Concepts, curiosity, teamwork" data-hi="9-12: कॉन्सेप्ट, जिज्ञासा, टीमवर्क">9-12: Concepts, curiosity, teamwork</div>
+            <div class="big-tile i18n" data-age-group="13-18" data-en="13-15: Reasoning, identity, skills" data-hi="13-15: तर्क, पहचान, कौशल">13-15: Reasoning, identity, skills</div>
+            <div class="big-tile i18n" data-age-group="13-18" data-en="16-18: Critical thinking, career prep" data-hi="16-18: क्रिटिकल थिंकिंग, करियर तैयारी">16-18: Critical thinking, career prep</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container ai-companion">
+          <div class="ai-bubble">
+            <h2 class="i18n" data-en="Personal AI Mentor" data-hi="पर्सनल एआई मेंटर">Personal AI Mentor</h2>
+            <p data-personal="greeting">Hi learner! Today we will focus on your goal.</p>
+            <p data-personal="encouragement">I brought examples you love.</p>
+            <p data-personal="style">Your learning style: Visual.</p>
+            <div class="tag-row">
+              <span class="tag i18n" data-en="Remembers goals" data-hi="लक्ष्य याद रखता है">Remembers goals</span>
+              <span class="tag i18n" data-en="Knows interests" data-hi="रुचियां जानता है">Knows interests</span>
+              <span class="tag i18n" data-en="Adapts pace" data-hi="गति अनुसार बदलता है">Adapts pace</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Update profile" data-hi="प्रोफाइल अपडेट">Update profile</h3>
+            <div class="profile-form">
+              <input data-new-profile placeholder="Add new learner name" />
+              <button class="button secondary i18n" data-add-profile data-en="Save name" data-hi="नाम सेव करें">Save name</button>
+              <input data-profile-field="nickname" placeholder="Nickname" />
+              <input data-profile-field="goal" placeholder="Learning goal" />
+              <input data-profile-field="favorite" placeholder="Favorite topic" />
+              <select data-profile-field="style">
+                <option value="Visual">Visual</option>
+                <option value="Play">Play</option>
+                <option value="Story">Story</option>
+                <option value="Debate">Debate</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container feature">
+          <div>
+            <h2 class="i18n" data-en="Bilingual voice learning" data-hi="द्विभाषी आवाज़ में सीखना">Bilingual voice learning</h2>
+            <p class="i18n" data-en="Tap the voice button to hear lessons in an Indian voice (browser support required)." data-hi="आवाज बटन दबाकर भारतीय आवाज़ में लेसन सुनें (ब्राउज़र सपोर्ट आवश्यक)।">
+              Tap the voice button to hear lessons in an Indian voice (browser support required).
+            </p>
+            <div class="card">
+              <p id="home-tts" class="i18n" data-en="Learning in your own language builds confidence and curiosity." data-hi="अपनी भाषा में सीखना आत्मविश्वास और जिज्ञासा बढ़ाता है।">
+                Learning in your own language builds confidence and curiosity.
+              </p>
+              <button class="button secondary" data-tts="home-tts">🔊 Voice</button>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Family Dashboard" data-hi="परिवार डैशबोर्ड">Family Dashboard</h3>
+            <p class="i18n" data-en="Parents get weekly skill maps, values tracker, and recommended activities." data-hi="अभिभावकों को साप्ताहिक कौशल मानचित्र, मूल्य ट्रैकर और सुझाई गतिविधियां मिलती हैं।">
+              Parents get weekly skill maps, values tracker, and recommended activities.
+            </p>
+            <div class="chip-row">
+              <div class="chip i18n" data-en="Screen time balance" data-hi="स्क्रीन टाइम संतुलन">Screen time balance</div>
+              <div class="chip i18n" data-en="Offline activity cards" data-hi="ऑफलाइन एक्टिविटी कार्ड">Offline activity cards</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="i18n" data-en="Resource Hub" data-hi="रिसोर्स हब">Resource Hub</h2>
+          <p class="i18n" data-en="Approved learning links and public-domain readings." data-hi="अनुमोदित सीखने के लिंक और पब्लिक-डोमेन रीडिंग।">
+            Approved learning links and public-domain readings.
+          </p>
+          <div class="resource-grid" data-resource-list="videos-6-8"></div>
+          <div class="resource-grid" data-book-list="books-6-8"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="i18n" data-en="Built for Indian classrooms and homes." data-hi="भारतीय कक्षाओं और घरों के लिए बनाया गया।">Built for Indian classrooms and homes.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

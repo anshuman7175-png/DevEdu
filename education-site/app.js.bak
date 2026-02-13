@@ -1,0 +1,1451 @@
+const state = {
+  language: "en",
+  voices: [],
+  preferredVoice: null,
+  quizIndex: 0,
+  quizScore: 0,
+  ageGroup: "8-12",
+  profile: "Aarav",
+};
+
+const defaultProfiles = ["Aarav", "Anaya", "Vihaan"];
+
+const profileDefaults = {
+  Aarav: {
+    ageGroup: "8-12",
+    progress: { math: 78, science: 64, languages: 72 },
+    values: { empathy: 82, responsibility: 69, safety: 75 },
+    profile: { nickname: "Aarav", goal: "Master fractions", favorite: "Space", style: "Visual" },
+  },
+  Anaya: {
+    ageGroup: "3-7",
+    progress: { math: 45, science: 40, languages: 55 },
+    values: { empathy: 60, responsibility: 52, safety: 48 },
+    profile: { nickname: "Anaya", goal: "Read 5 new words", favorite: "Animals", style: "Play" },
+  },
+  Vihaan: {
+    ageGroup: "13-18",
+    progress: { math: 70, science: 73, languages: 66 },
+    values: { empathy: 74, responsibility: 71, safety: 78 },
+    profile: { nickname: "Vihaan", goal: "Ace civics", favorite: "Technology", style: "Debate" },
+  },
+};
+
+function getProfileData() {
+  const stored = localStorage.getItem(`devedu_profile_${state.profile}`);
+  if (stored) {
+    try {
+      return JSON.parse(stored);
+    } catch (err) {
+      console.warn("Failed to read profile", err);
+    }
+  }
+  return profileDefaults[state.profile];
+}
+
+function saveProfileData(data) {
+  localStorage.setItem(`devedu_profile_${state.profile}`, JSON.stringify(data));
+}
+
+function getProgressKey() {
+  return `devedu_progress_${state.profile}`;
+}
+
+function loadProgress() {
+  const stored = localStorage.getItem(getProgressKey());
+  if (!stored) {
+    return {};
+  }
+  try {
+    return JSON.parse(stored);
+  } catch (err) {
+    console.warn("Failed to read progress", err);
+    return {};
+  }
+}
+
+function saveProgress(progress) {
+  localStorage.setItem(getProgressKey(), JSON.stringify(progress));
+}
+
+const quizQuestions = [
+  {
+    en: "Why should we save water?",
+    hi: "हमें पानी क्यों बचाना चाहिए?",
+    options: {
+      en: ["Because it is unlimited", "Because many people need it", "Because it is noisy"],
+      hi: ["क्योंकि यह अनंत है", "क्योंकि कई लोगों को इसकी जरूरत है", "क्योंकि यह तेज आवाज करता है"],
+    },
+    answerIndex: 1,
+    ageGroup: "8-12",
+  },
+  {
+    en: "What is a good way to show respect in class?",
+    hi: "कक्षा में सम्मान दिखाने का अच्छा तरीका क्या है?",
+    options: {
+      en: ["Listen when others speak", "Interrupt every time", "Ignore the teacher"],
+      hi: ["जब कोई बोले तो ध्यान से सुनना", "हर समय बीच में बोलना", "शिक्षक को नजरअंदाज करना"],
+    },
+    answerIndex: 0,
+    ageGroup: "3-7",
+  },
+  {
+    en: "Which skill helps you learn faster?",
+    hi: "कौन सा कौशल आपको तेजी से सीखने में मदद करता है?",
+    options: {
+      en: ["Curiosity", "Being careless", "Skipping practice"],
+      hi: ["जिज्ञासा", "लापरवाह होना", "अभ्यास छोड़ना"],
+    },
+    answerIndex: 0,
+    ageGroup: "13-18",
+  },
+  {
+    en: "If you find a lost pencil, what should you do?",
+    hi: "अगर आपको खोई हुई पेंसिल मिले तो क्या करना चाहिए?",
+    options: {
+      en: ["Keep it forever", "Return it or tell a teacher", "Throw it away"],
+      hi: ["हमेशा के लिए रख लें", "लौटा दें या शिक्षक को बताएं", "फेंक दें"],
+    },
+    answerIndex: 1,
+    ageGroup: "3-7",
+  },
+  {
+    en: "Which number is bigger?",
+    hi: "कौन सी संख्या बड़ी है?",
+    options: {
+      en: ["9", "6", "3"],
+      hi: ["9", "6", "3"],
+    },
+    answerIndex: 0,
+    ageGroup: "3-7",
+  },
+  {
+    en: "Why do we separate wet and dry waste?",
+    hi: "गीला और सूखा कचरा अलग क्यों करते हैं?",
+    options: {
+      en: ["For fun", "To recycle properly", "To make it heavier"],
+      hi: ["मज़े के लिए", "सही तरीके से रीसायकल करने के लिए", "भारी बनाने के लिए"],
+    },
+    answerIndex: 1,
+    ageGroup: "8-12",
+  },
+  {
+    en: "What helps a plant grow?",
+    hi: "पौधे को बढ़ने में क्या मदद करता है?",
+    options: {
+      en: ["Sunlight and water", "Only noise", "Only toys"],
+      hi: ["धूप और पानी", "सिर्फ शोर", "सिर्फ खिलौने"],
+    },
+    answerIndex: 0,
+    ageGroup: "8-12",
+  },
+  {
+    en: "Which is a safe online habit?",
+    hi: "कौन सी ऑनलाइन आदत सुरक्षित है?",
+    options: {
+      en: ["Share passwords", "Use strong passwords", "Click any link"],
+      hi: ["पासवर्ड साझा करना", "मजबूत पासवर्ड रखना", "हर लिंक पर क्लिक करना"],
+    },
+    answerIndex: 1,
+    ageGroup: "13-18",
+  },
+  {
+    en: "Why is the Constitution important?",
+    hi: "संविधान महत्वपूर्ण क्यों है?",
+    options: {
+      en: ["It sets rules and rights", "It is a movie", "It is a game"],
+      hi: ["यह नियम और अधिकार तय करता है", "यह एक फिल्म है", "यह एक खेल है"],
+    },
+    answerIndex: 0,
+    ageGroup: "13-18",
+  },
+];
+
+const lessonPrereqs = {
+  "lesson-shapes": [],
+  "lesson-fractions": ["lesson-shapes"],
+  "lesson-hindi-reading": ["lesson-shapes"],
+  "lesson-living": ["lesson-shapes"],
+  "lesson-algebra": ["lesson-fractions"],
+  "lesson-constitution": ["lesson-algebra"],
+  "lesson-economy": ["lesson-constitution"],
+};
+
+const lessonLabels = {
+  "lesson-shapes": { en: "Foundations - Shapes", hi: "बुनियाद - आकार" },
+  "lesson-fractions": { en: "Math - Fractions", hi: "गणित - भिन्न" },
+  "lesson-hindi-reading": { en: "Languages - Hindi", hi: "भाषा - हिंदी" },
+  "lesson-living": { en: "Science - Biology", hi: "विज्ञान - जीवविज्ञान" },
+  "lesson-algebra": { en: "Math - Algebra", hi: "गणित - बीजगणित" },
+  "lesson-constitution": { en: "Civics - Constitution", hi: "नागरिक शास्त्र - संविधान" },
+  "lesson-economy": { en: "Economics - Basics", hi: "अर्थशास्त्र - बुनियाद" },
+};
+
+const recommendedLessonVideos = {
+  "lesson-shapes": "https://www.youtube.com/results?search_query=shapes+for+kids",
+  "lesson-fractions": "https://www.youtube.com/results?search_query=fractions+for+kids",
+  "lesson-hindi-reading": "https://www.youtube.com/results?search_query=hindi+reading+for+kids",
+  "lesson-living": "https://www.youtube.com/results?search_query=living+and+non+living+things+for+kids",
+  "lesson-algebra": "https://www.youtube.com/results?search_query=algebra+basics+for+kids",
+  "lesson-constitution": "https://www.youtube.com/results?search_query=indian+constitution+basics+for+students",
+  "lesson-economy": "https://www.youtube.com/results?search_query=basic+economics+for+students",
+};
+
+const resourceCatalog = {
+  "videos-6-8": [
+    {
+      label: { en: "Fractions (Khan Academy)", hi: "भिन्न (खान अकादमी)" },
+      desc: { en: "Grade 6-7 fundamentals and practice.", hi: "कक्षा 6-7 की बुनियाद और अभ्यास।" },
+      url: "https://www.khanacademy.org/search?page_search_query=fractions",
+    },
+    {
+      label: { en: "Cells & Life (TED-Ed)", hi: "कोशिकाएं और जीवन (TED-Ed)" },
+      desc: { en: "Short concept explainers.", hi: "छोटे कॉन्सेप्ट एक्सप्लेनर।" },
+      url: "https://ed.ted.com/search?utf8=%E2%9C%93&q=cells",
+    },
+    {
+      label: { en: "Clean Water (NCERT channels)", hi: "स्वच्छ पानी (NCERT चैनल)" },
+      desc: { en: "Official government videos by topic.", hi: "विषय अनुसार सरकारी वीडियो।" },
+      url: "https://www.youtube.com/results?search_query=NCERT+class+6+water",
+    },
+  ],
+  "videos-9-10": [
+    {
+      label: { en: "Algebra Basics (Khan Academy)", hi: "बीजगणित बुनियाद (खान अकादमी)" },
+      desc: { en: "Linear equations and practice sets.", hi: "रेखीय समीकरण और अभ्यास।" },
+      url: "https://www.khanacademy.org/search?page_search_query=linear+equations",
+    },
+    {
+      label: { en: "Physics Basics (CrashCourse)", hi: "फिजिक्स बुनियाद (CrashCourse)" },
+      desc: { en: "Quick science primers.", hi: "तेज़ विज्ञान परिचय।" },
+      url: "https://thecrashcourse.com/?s=physics",
+    },
+    {
+      label: { en: "Civics & Constitution (NCERT)", hi: "नागरिक शास्त्र (NCERT)" },
+      desc: { en: "Official civics topics by chapter.", hi: "अध्याय अनुसार नागरिक शास्त्र।" },
+      url: "https://www.youtube.com/results?search_query=NCERT+civics+class+9",
+    },
+  ],
+  "videos-11-12": [
+    {
+      label: { en: "Economics Basics (Khan Academy)", hi: "अर्थशास्त्र बुनियाद (खान अकादमी)" },
+      desc: { en: "Micro and macro foundations.", hi: "माइक्रो और मैक्रो बुनियाद।" },
+      url: "https://www.khanacademy.org/search?page_search_query=economics",
+    },
+    {
+      label: { en: "History & Polity (CrashCourse)", hi: "इतिहास और पॉलिटी (CrashCourse)" },
+      desc: { en: "Concept explainers for older grades.", hi: "बड़े छात्रों के लिए कॉन्सेप्ट।" },
+      url: "https://thecrashcourse.com/?s=history",
+    },
+    {
+      label: { en: "Concept Explain (TED-Ed)", hi: "कॉन्सेप्ट एक्सप्लेन (TED-Ed)" },
+      desc: { en: "Short lessons for revision.", hi: "रिविजन के लिए छोटे लेसन।" },
+      url: "https://ed.ted.com/",
+    },
+  ],
+  "games-3-7": [
+    {
+      label: { en: "Story Builder Guide", hi: "स्टोरी बिल्डर गाइड" },
+      desc: { en: "How to create endings and values.", hi: "कहानी के अंत और मूल्य बनाएं।" },
+      url: "https://www.khanacademy.org/",
+    },
+    {
+      label: { en: "Mindfulness Mini-Guide", hi: "माइंडफुलनेस मिनी-गाइड" },
+      desc: { en: "Breathing and focus practice.", hi: "सांस और फोकस अभ्यास।" },
+      url: "https://ed.ted.com/",
+    },
+  ],
+  "games-8-12": [
+    {
+      label: { en: "Science Detective Tips", hi: "साइंस डिटेक्टिव टिप्स" },
+      desc: { en: "Observation and experiment steps.", hi: "ऑब्ज़र्वेशन और प्रयोग कदम।" },
+      url: "https://www.youtube.com/results?search_query=NCERT+science+class+6+experiment",
+    },
+    {
+      label: { en: "Math Sprint Practice", hi: "मैथ स्प्रिंट अभ्यास" },
+      desc: { en: "Quick drills by topic.", hi: "विषय अनुसार तेज़ अभ्यास।" },
+      url: "https://www.khanacademy.org/search?page_search_query=arithmetic+practice",
+    },
+  ],
+  "games-13-18": [
+    {
+      label: { en: "Civic Hero Missions", hi: "सिविक हीरो मिशन" },
+      desc: { en: "Community and civics challenges.", hi: "समुदाय और नागरिक चुनौतियां।" },
+      url: "https://www.youtube.com/results?search_query=NCERT+civics+class+10",
+    },
+    {
+      label: { en: "Quiz Race Topics", hi: "क्विज़ रेस विषय" },
+      desc: { en: "Revision topics by subject.", hi: "विषय अनुसार रिविजन।" },
+      url: "https://ed.ted.com/",
+    },
+  ],
+  "parent-guides": [
+    {
+      label: { en: "NCERT Official Resources", hi: "NCERT आधिकारिक संसाधन" },
+      desc: { en: "Syllabus-aligned resources.", hi: "सिलेबस अनुरूप संसाधन।" },
+      url: "https://ncert.nic.in/",
+    },
+    {
+      label: { en: "Digital Safety (TED-Ed)", hi: "डिजिटल सुरक्षा (TED-Ed)" },
+      desc: { en: "Short lessons for families.", hi: "परिवार के लिए छोटे लेसन।" },
+      url: "https://ed.ted.com/search?utf8=%E2%9C%93&q=digital+safety",
+    },
+  ],
+  "daily-routine": [
+    {
+      label: { en: "Focus Sprints", hi: "फोकस स्प्रिंट" },
+      desc: { en: "Time-boxed study tips.", hi: "टाइम-बॉक्स पढ़ाई टिप्स।" },
+      url: "https://www.khanacademy.org/",
+    },
+    {
+      label: { en: "Wellbeing Breaks", hi: "वेलबीइंग ब्रेक" },
+      desc: { en: "Short reset routines.", hi: "छोटे रीसेट रूटीन।" },
+      url: "https://ed.ted.com/",
+    },
+  ],
+  "life-skills": [
+    {
+      label: { en: "Empathy & Kindness (TED-Ed)", hi: "सहानुभूति और दया (TED-Ed)" },
+      desc: { en: "Short lessons on values and behavior.", hi: "मूल्य और व्यवहार पर छोटे लेसन।" },
+      url: "https://ed.ted.com/search?utf8=%E2%9C%93&q=empathy",
+    },
+    {
+      label: { en: "Civic Habits (NCERT)", hi: "नागरिक आदतें (NCERT)" },
+      desc: { en: "Civics topics by class.", hi: "कक्षा अनुसार नागरिक विषय।" },
+      url: "https://www.youtube.com/results?search_query=NCERT+civics+class+6",
+    },
+  ],
+  "auth-support": [
+    {
+      label: { en: "Help Center", hi: "हेल्प सेंटर" },
+      desc: { en: "FAQs and guidance.", hi: "सवाल और मार्गदर्शन।" },
+      url: "https://ncert.nic.in/",
+    },
+  ],
+};
+
+const bookCatalog = {
+  "books-6-8": [
+    {
+      label: { en: "Classic Science Stories", hi: "क्लासिक साइंस कहानियां" },
+      desc: { en: "Public-domain science reads.", hi: "पब्लिक-डोमेन साइंस रीड्स।" },
+      url: "https://www.gutenberg.org/ebooks/search/?query=science+for+children",
+    },
+    {
+      label: { en: "Adventure & Values", hi: "साहस और मूल्य" },
+      desc: { en: "Open-license classics.", hi: "ओपन-लाइसेंस क्लासिक्स।" },
+      url: "https://archive.org/search?query=subject%3A%22juvenile+literature%22",
+    },
+  ],
+  "books-9-10": [
+    {
+      label: { en: "Literature Classics", hi: "साहित्य क्लासिक्स" },
+      desc: { en: "Public-domain novels and plays.", hi: "पब्लिक-डोमेन उपन्यास और नाटक।" },
+      url: "https://www.gutenberg.org/ebooks/search/?query=young+adult+classic",
+    },
+    {
+      label: { en: "History Readers", hi: "इतिहास रीडर्स" },
+      desc: { en: "Open library archives.", hi: "ओपन लाइब्रेरी आर्काइव।" },
+      url: "https://archive.org/search?query=subject%3A%22history%22%20AND%20collection%3A%22inlibrary%22",
+    },
+  ],
+  "books-11-12": [
+    {
+      label: { en: "Economics & Society", hi: "अर्थशास्त्र और समाज" },
+      desc: { en: "Public-domain policy and society reads.", hi: "पब्लिक-डोमेन नीति और समाज रीड्स।" },
+      url: "https://www.gutenberg.org/ebooks/search/?query=economics",
+    },
+    {
+      label: { en: "World Literature", hi: "विश्व साहित्य" },
+      desc: { en: "Open-license literature.", hi: "ओपन-लाइसेंस साहित्य।" },
+      url: "https://archive.org/search?query=subject%3A%22literature%22%20AND%20collection%3A%22inlibrary%22",
+    },
+  ],
+};
+
+function setLanguage(lang) {
+  state.language = lang;
+  document.documentElement.setAttribute("lang", lang === "hi" ? "hi" : "en");
+  document.querySelectorAll(".i18n").forEach((el) => {
+    const text = el.getAttribute(`data-${lang}`);
+    if (text) {
+      el.textContent = text;
+    }
+  });
+
+  const langButtons = document.querySelectorAll("[data-lang]");
+  langButtons.forEach((btn) => {
+    btn.classList.toggle("secondary", btn.dataset.lang !== lang);
+  });
+
+  renderQuiz();
+  renderPersonalAI();
+  syncLessonLocks(loadProgress());
+  renderResourceLists();
+  renderBookLists();
+  updateTutorMessage();
+}
+
+function createResourceCard(item) {
+  const card = document.createElement("div");
+  card.className = "resource-card";
+  const label = state.language === "hi" ? item.label.hi || item.label.en : item.label.en;
+  const desc = state.language === "hi" ? item.desc.hi || item.desc.en : item.desc.en;
+  card.innerHTML = `
+    <h3>${label}</h3>
+    <p>${desc}</p>
+    <a class="button secondary" href="${item.url}" target="_blank" rel="noopener noreferrer">Open</a>
+  `;
+  return card;
+}
+
+function renderResourceLists() {
+  document.querySelectorAll("[data-resource-list]").forEach((el) => {
+    const key = el.dataset.resourceList;
+    const items = resourceCatalog[key] || [];
+    el.innerHTML = "";
+    items.forEach((item) => el.appendChild(createResourceCard(item)));
+  });
+}
+
+function renderBookLists() {
+  document.querySelectorAll("[data-book-list]").forEach((el) => {
+    const key = el.dataset.bookList;
+    const items = bookCatalog[key] || [];
+    el.innerHTML = "";
+    items.forEach((item) => el.appendChild(createResourceCard(item)));
+  });
+}
+
+function saveState() {
+  const payload = {
+    language: state.language,
+    ageGroup: state.ageGroup,
+    profile: state.profile,
+    quizIndex: state.quizIndex,
+    quizScore: state.quizScore,
+  };
+  localStorage.setItem("devedu_state", JSON.stringify(payload));
+}
+
+function loadState() {
+  const saved = localStorage.getItem("devedu_state");
+  if (!saved) {
+    return;
+  }
+  try {
+    const payload = JSON.parse(saved);
+    if (payload.language) {
+      state.language = payload.language;
+    }
+    if (payload.ageGroup) {
+      state.ageGroup = payload.ageGroup;
+    }
+    if (payload.profile) {
+      state.profile = payload.profile;
+    }
+    if (typeof payload.quizIndex === "number") {
+      state.quizIndex = payload.quizIndex;
+    }
+    if (typeof payload.quizScore === "number") {
+      state.quizScore = payload.quizScore;
+    }
+  } catch (err) {
+    console.warn("Failed to load saved state", err);
+  }
+}
+
+function getProfiles() {
+  const stored = localStorage.getItem("devedu_profiles");
+  if (!stored) {
+    return [...defaultProfiles];
+  }
+  try {
+    const parsed = JSON.parse(stored);
+    return Array.isArray(parsed) && parsed.length ? parsed : [...defaultProfiles];
+  } catch (err) {
+    console.warn("Failed to read profiles", err);
+    return [...defaultProfiles];
+  }
+}
+
+function saveProfiles(profiles) {
+  localStorage.setItem("devedu_profiles", JSON.stringify(profiles));
+}
+
+function renderProfileOptions() {
+  const profiles = getProfiles();
+  document.querySelectorAll("[data-profile-select]").forEach((select) => {
+    const current = select.value || state.profile;
+    select.innerHTML = "";
+    profiles.forEach((name) => {
+      const option = document.createElement("option");
+      option.value = name;
+      option.textContent = name;
+      select.appendChild(option);
+    });
+    select.value = profiles.includes(current) ? current : profiles[0];
+  });
+  if (!profiles.includes(state.profile)) {
+    state.profile = profiles[0];
+  }
+}
+
+function setAgeGroup(ageGroup) {
+  state.ageGroup = ageGroup;
+  document.body.classList.toggle("age-young", ageGroup === "3-7");
+  document.querySelectorAll("[data-age]").forEach((btn) => {
+    btn.classList.toggle("secondary", btn.dataset.age !== ageGroup);
+  });
+  const profileData = getProfileData();
+  if (profileData) {
+    profileData.ageGroup = ageGroup;
+    saveProfileData(profileData);
+  }
+  state.quizIndex = 0;
+  state.quizScore = 0;
+  renderQuiz();
+  filterAgeGroupElements();
+  saveState();
+}
+
+function renderPersonalAI() {
+  const profileData = getProfileData();
+  if (!profileData) {
+    return;
+  }
+  const { profile } = profileData;
+  const greeting = state.language === "hi"
+    ? `नमस्ते ${profile.nickname}! आज हम ${profile.goal} पर फोकस करेंगे।`
+    : `Hi ${profile.nickname}! Today we will focus on ${profile.goal}.`;
+  const encouragement = state.language === "hi"
+    ? `आपको ${profile.favorite} पसंद है, तो आज हम उससे जुड़े उदाहरण लाए हैं।`
+    : `You love ${profile.favorite}, so I brought examples related to it.`;
+  const style = state.language === "hi"
+    ? `आपकी सीखने की शैली: ${profile.style}.`
+    : `Your learning style: ${profile.style}.`;
+
+  document.querySelectorAll("[data-personal='greeting']").forEach((el) => {
+    el.textContent = greeting;
+  });
+  document.querySelectorAll("[data-personal='encouragement']").forEach((el) => {
+    el.textContent = encouragement;
+  });
+  document.querySelectorAll("[data-personal='style']").forEach((el) => {
+    el.textContent = style;
+  });
+}
+
+function syncProfileForm() {
+  const profileData = getProfileData();
+  if (!profileData) {
+    return;
+  }
+  document.querySelectorAll("[data-profile-field]").forEach((input) => {
+    const key = input.dataset.profileField;
+    if (profileData.profile && profileData.profile[key]) {
+      input.value = profileData.profile[key];
+    }
+  });
+}
+
+function attachProfileForm() {
+  document.querySelectorAll("[data-profile-field]").forEach((input) => {
+    input.addEventListener("input", () => {
+      const profileData = getProfileData();
+      if (!profileData) {
+        return;
+      }
+      const key = input.dataset.profileField;
+      profileData.profile = profileData.profile || {};
+      profileData.profile[key] = input.value;
+      saveProfileData(profileData);
+      renderPersonalAI();
+    });
+  });
+}
+
+function loadVoices() {
+  state.voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  const match = state.voices.find((voice) => voice.lang === "hi-IN")
+    || state.voices.find((voice) => voice.lang === "en-IN")
+    || state.voices.find((voice) => voice.lang.startsWith(state.language === "hi" ? "hi" : "en"));
+  state.preferredVoice = match || state.voices[0] || null;
+}
+
+function speakText(text) {
+  if (!window.speechSynthesis) {
+    alert("Text-to-speech is not supported in this browser.");
+    return;
+  }
+  if (!text) {
+    return;
+  }
+  const utterance = new SpeechSynthesisUtterance(text);
+  if (state.preferredVoice) {
+    utterance.voice = state.preferredVoice;
+  }
+  utterance.rate = 0.95;
+  utterance.pitch = 1;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utterance);
+}
+
+function attachTtsControls() {
+  document.querySelectorAll("[data-tts]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-tts");
+      const textEl = document.getElementById(targetId);
+      const text = textEl ? textEl.textContent.trim() : "";
+      speakText(text);
+    });
+  });
+}
+
+function filterLessons() {
+  const age = document.getElementById("ageFilter");
+  const board = document.getElementById("boardFilter");
+  const search = document.getElementById("lessonSearch");
+  if (!age || !board || !search) {
+    return;
+  }
+  const ageValue = age.value;
+  const boardValue = board.value;
+  const query = search.value.toLowerCase();
+
+  document.querySelectorAll(".lesson-card").forEach((card) => {
+    const matchAge = ageValue === "all" || card.dataset.age === ageValue;
+    const matchBoard = boardValue === "all" || card.dataset.board === boardValue;
+    const matchText = card.textContent.toLowerCase().includes(query);
+    const matchGroup = matchesAgeGroup(card.dataset.ageGroup, state.ageGroup);
+    card.style.display = matchAge && matchBoard && matchText && matchGroup ? "flex" : "none";
+  });
+}
+
+function matchesAgeGroup(value, target) {
+  if (!value || value === "all") {
+    return true;
+  }
+  return value.split(",").map((item) => item.trim()).includes(target);
+}
+
+function filterAgeGroupElements() {
+  document.querySelectorAll("[data-age-group]").forEach((el) => {
+    const match = matchesAgeGroup(el.dataset.ageGroup, state.ageGroup);
+    el.classList.toggle("age-hidden", !match);
+  });
+}
+
+function getQuizPool() {
+  const pool = quizQuestions.filter((q) => q.ageGroup === state.ageGroup);
+  return pool.length ? pool : quizQuestions;
+}
+
+function renderQuiz() {
+  const quizEl = document.getElementById("quiz");
+  if (!quizEl) {
+    return;
+  }
+  const pool = getQuizPool();
+  const question = pool[state.quizIndex % pool.length];
+  const lang = state.language;
+  quizEl.querySelector(".quiz-question").textContent = question[lang];
+
+  const options = quizEl.querySelector(".quiz-options");
+  options.innerHTML = "";
+  question.options[lang].forEach((opt, index) => {
+    const btn = document.createElement("button");
+    btn.className = "quiz-option";
+    btn.textContent = opt;
+    btn.addEventListener("click", () => handleQuizAnswer(btn, index));
+    options.appendChild(btn);
+  });
+
+  const progress = quizEl.querySelector(".progress span");
+  const percent = Math.round(((state.quizIndex) / pool.length) * 100);
+  progress.style.width = `${percent}%`;
+
+  quizEl.querySelector(".quiz-score").textContent = `${state.quizScore} / ${pool.length}`;
+}
+
+function handleQuizAnswer(button, index) {
+  const quizEl = document.getElementById("quiz");
+  if (!quizEl) {
+    return;
+  }
+  const pool = getQuizPool();
+  const question = pool[state.quizIndex % pool.length];
+  const isCorrect = index === question.answerIndex;
+  button.classList.add(isCorrect ? "correct" : "wrong");
+  if (isCorrect) {
+    state.quizScore += 1;
+  }
+
+  saveState();
+
+  setTimeout(() => {
+    state.quizIndex = (state.quizIndex + 1) % pool.length;
+    renderQuiz();
+  }, 900);
+}
+
+function updateDashboardBars() {
+  const profileData = getProfileData();
+  if (!profileData) {
+    return;
+  }
+  const mapping = [
+    { key: "math", selector: "[data-metric='math']" },
+    { key: "science", selector: "[data-metric='science']" },
+    { key: "languages", selector: "[data-metric='languages']" },
+    { key: "empathy", selector: "[data-metric='empathy']" },
+    { key: "responsibility", selector: "[data-metric='responsibility']" },
+    { key: "safety", selector: "[data-metric='safety']" },
+  ];
+  mapping.forEach((item) => {
+    const value = profileData.progress[item.key] ?? profileData.values[item.key] ?? 0;
+    const bar = document.querySelector(`${item.selector} span`);
+    const label = document.querySelector(`[data-metric-label='${item.key}'] .metric-value`);
+    if (bar) {
+      bar.style.width = `${value}%`;
+    }
+    if (label) {
+      label.textContent = `${value}%`;
+    }
+  });
+}
+
+function syncProfileUI() {
+  const selects = document.querySelectorAll("[data-profile-select]");
+  selects.forEach((select) => {
+    select.value = state.profile;
+  });
+  const profileData = getProfileData();
+  if (profileData && profileData.ageGroup) {
+    setAgeGroup(profileData.ageGroup);
+  }
+  updateDashboardBars();
+  syncProfileForm();
+  renderPersonalAI();
+  syncProgressUI();
+}
+
+function attachProfileControls() {
+  document.querySelectorAll("[data-profile-select]").forEach((select) => {
+    select.addEventListener("change", () => {
+      state.profile = select.value;
+      saveState();
+      syncProfileUI();
+    });
+  });
+}
+
+function attachNewProfileControls() {
+  document.querySelectorAll("[data-new-profile]").forEach((input) => {
+    const button = input.closest(".profile-form")?.querySelector("[data-add-profile]");
+    if (!button) {
+      return;
+    }
+    button.addEventListener("click", () => {
+      const name = input.value.trim();
+      if (!name) {
+        return;
+      }
+      const profiles = getProfiles();
+      if (!profiles.includes(name)) {
+        profiles.push(name);
+        saveProfiles(profiles);
+      }
+      if (!profileDefaults[name]) {
+        profileDefaults[name] = {
+          ageGroup: state.ageGroup,
+          progress: { math: 50, science: 50, languages: 50 },
+          values: { empathy: 50, responsibility: 50, safety: 50 },
+          profile: { nickname: name, goal: "Learn with joy", favorite: "Stories", style: "Play" },
+        };
+      }
+      state.profile = name;
+      input.value = "";
+      renderProfileOptions();
+      saveState();
+      syncProfileUI();
+    });
+  });
+}
+
+function attachVideoUrlInputs() {
+  document.querySelectorAll("[data-video-input]").forEach((input) => {
+    input.addEventListener("input", () => {
+      const frame = input.closest(".media-card").querySelector(".video-frame");
+      if (!frame) {
+        return;
+      }
+      const url = input.value.trim();
+      if (!url) {
+        resetVideoFrame(frame);
+        return;
+      }
+      setVideoPreviewFromUrl(frame, normalizeUrl(url));
+    });
+  });
+}
+
+function resetVideoFrame(frame) {
+  frame.innerHTML = "";
+  frame.textContent = frame.dataset.defaultLabel || "Video";
+}
+
+function setVideoPreviewFromUrl(frame, url) {
+  frame.innerHTML = "";
+  const youtubeId = getYoutubeId(url);
+  if (youtubeId) {
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube.com/embed/${youtubeId}`;
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+    frame.appendChild(iframe);
+    return;
+  }
+
+  if (isVideoFile(url)) {
+    const video = document.createElement("video");
+    video.controls = true;
+    video.src = url;
+    frame.appendChild(video);
+    return;
+  }
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = "Open video link";
+  frame.appendChild(link);
+}
+
+function normalizeUrl(url) {
+  if (/^https?:\/\//i.test(url)) {
+    return url;
+  }
+  return `https://${url}`;
+}
+
+function setVideoPreviewFromFile(frame, file) {
+  frame.innerHTML = "";
+  const video = document.createElement("video");
+  video.controls = true;
+  video.src = URL.createObjectURL(file);
+  frame.appendChild(video);
+}
+
+function isVideoFile(url) {
+  return /\.(mp4|webm|ogg)(\?.*)?$/i.test(url);
+}
+
+function getYoutubeId(url) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes("youtu.be")) {
+      return parsed.pathname.replace("/", "");
+    }
+    if (parsed.hostname.includes("youtube.com")) {
+      if (parsed.pathname.startsWith("/shorts/")) {
+        return parsed.pathname.replace("/shorts/", "");
+      }
+      if (parsed.pathname.startsWith("/embed/")) {
+        return parsed.pathname.replace("/embed/", "");
+      }
+      return parsed.searchParams.get("v");
+    }
+  } catch (err) {
+    return null;
+  }
+  return null;
+}
+
+function loadLessonMedia() {
+  const stored = localStorage.getItem(`devedu_lesson_media_${state.profile}`);
+  if (!stored) {
+    return {};
+  }
+  try {
+    return JSON.parse(stored);
+  } catch (err) {
+    console.warn("Failed to read lesson media", err);
+    return {};
+  }
+}
+
+function saveLessonMedia(media) {
+  localStorage.setItem(`devedu_lesson_media_${state.profile}`, JSON.stringify(media));
+}
+
+function updateLessonMediaPreviews() {
+  const media = loadLessonMedia();
+  document.querySelectorAll("[data-lesson-id]").forEach((card) => {
+    const lessonId = card.dataset.lessonId;
+    const frame = card.querySelector("[data-lesson-preview]");
+    if (!frame) {
+      return;
+    }
+    const url = media[lessonId] || recommendedLessonVideos[lessonId];
+    if (!url) {
+      resetVideoFrame(frame);
+      return;
+    }
+    setVideoPreviewFromUrl(frame, url);
+  });
+}
+
+function getTutorScripts() {
+  const page = window.location.pathname.split("/").pop() || "index.html";
+  const base = [
+    {
+      en: "Hi! I am your AI tutor. Tell me your goal, and I will guide you step by step.",
+      hi: "नमस्ते! मैं आपका एआई ट्यूटर हूं। अपना लक्ष्य बताएं, मैं चरण-दर-चरण मार्गदर्शन दूंगा।",
+    },
+    {
+      en: "We will learn in short, focused bursts and take tiny breaks to help memory.",
+      hi: "हम छोटे, केंद्रित हिस्सों में सीखेंगे और याद रखने के लिए छोटे ब्रेक लेंगे।",
+    },
+    {
+      en: "If something feels hard, we will slow down and try a new example.",
+      hi: "अगर कुछ कठिन लगे, तो हम धीमे चलेंगे और नया उदाहरण देखेंगे।",
+    },
+  ];
+  const perPage = {
+    "games.html": [
+      {
+        en: "Pick a game that matches your age group. I will explain the rules and goals.",
+        hi: "अपनी उम्र के अनुसार गेम चुनें। मैं नियम और लक्ष्य समझाऊंगा।",
+      },
+      {
+        en: "We will practice one skill at a time and celebrate progress.",
+        hi: "हम एक-एक कौशल पर अभ्यास करेंगे और प्रगति का जश्न मनाएंगे।",
+      },
+    ],
+    "learn.html": [
+      {
+        en: "Start with the first lesson to unlock the next. I will help if it is locked.",
+        hi: "अगला लेसन खोलने के लिए पहला लेसन पूरा करें। अगर लॉक है तो मैं मदद करूंगा।",
+      },
+      {
+        en: "Use the lesson video, then try a quick quiz to check understanding.",
+        hi: "लेसन वीडियो देखें, फिर समझ जांचने के लिए छोटा क्विज़ करें।",
+      },
+    ],
+    "life.html": [
+      {
+        en: "Life skills grow with practice. Write one kind act you did today.",
+        hi: "जीवन कौशल अभ्यास से बढ़ते हैं। आज किया गया एक अच्छा काम लिखें।",
+      },
+    ],
+    "daily.html": [
+      {
+        en: "We will balance study, play, and rest for a healthy routine.",
+        hi: "हम पढ़ाई, खेल, और आराम का संतुलन बनाएंगे।",
+      },
+    ],
+    "parents.html": [
+      {
+        en: "Check progress bars to see strengths and areas to support this week.",
+        hi: "प्रगति बार से इस सप्ताह की ताकत और मदद वाले क्षेत्र देखें।",
+      },
+    ],
+    "auth.html": [
+      {
+        en: "This is a demo login. No real accounts are created.",
+        hi: "यह डेमो लॉगिन है। कोई वास्तविक अकाउंट नहीं बनेगा।",
+      },
+    ],
+  };
+  return [...base, ...(perPage[page] || [])];
+}
+
+function initTutorPanel() {
+  if (document.querySelector(".tutor-panel")) {
+    return;
+  }
+  const hidden = localStorage.getItem("devedu_tutor_hidden") === "true";
+  const panel = document.createElement("div");
+  panel.className = "tutor-panel";
+  panel.innerHTML = `
+    <div class="tutor-header">
+      <strong class="tutor-title">AI Tutor</strong>
+      <button class="tutor-close" type="button" aria-label="Close">x</button>
+    </div>
+    <p class="tutor-message"></p>
+    <div class="tutor-actions">
+      <button class="button secondary" type="button" data-tutor-talk>Talk</button>
+      <button class="button" type="button" data-tutor-next>Next tip</button>
+    </div>
+  `;
+  document.body.appendChild(panel);
+
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "tutor-toggle";
+  toggle.textContent = "AI Tutor";
+  document.body.appendChild(toggle);
+
+  const setHidden = (value) => {
+    panel.classList.toggle("hidden", value);
+    toggle.classList.toggle("hidden", !value);
+    localStorage.setItem("devedu_tutor_hidden", String(value));
+  };
+
+  setHidden(hidden);
+  toggle.addEventListener("click", () => setHidden(false));
+  panel.querySelector(".tutor-close").addEventListener("click", () => setHidden(true));
+
+  panel.querySelector("[data-tutor-next]").addEventListener("click", () => {
+    const step = Number(localStorage.getItem("devedu_tutor_step") || "0") + 1;
+    localStorage.setItem("devedu_tutor_step", String(step));
+    updateTutorMessage();
+  });
+
+  panel.querySelector("[data-tutor-talk]").addEventListener("click", () => {
+    const message = panel.querySelector(".tutor-message").textContent.trim();
+    if (message) {
+      speakText(message);
+    }
+  });
+
+  updateTutorMessage();
+}
+
+function updateTutorMessage() {
+  const panel = document.querySelector(".tutor-panel");
+  if (!panel) {
+    return;
+  }
+  const scripts = getTutorScripts();
+  const step = Number(localStorage.getItem("devedu_tutor_step") || "0");
+  const entry = scripts[step % scripts.length];
+  const message = state.language === "hi" ? entry.hi : entry.en;
+  panel.querySelector(".tutor-message").textContent = message;
+}
+
+function attachLessonVideoButtons() {
+  document.querySelectorAll("[data-add-lesson-video]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest("[data-lesson-id]");
+      if (!card) {
+        return;
+      }
+      const lessonId = card.dataset.lessonId;
+      const input = window.prompt("Paste video URL (YouTube or .mp4):");
+      if (input === null) {
+        return;
+      }
+      const url = input.trim();
+      const media = loadLessonMedia();
+      if (!url) {
+        delete media[lessonId];
+      } else {
+        media[lessonId] = normalizeUrl(url);
+      }
+      saveLessonMedia(media);
+      updateLessonMediaPreviews();
+    });
+  });
+}
+
+function syncProgressUI() {
+  const progress = loadProgress();
+  document.querySelectorAll("[data-progress-item]").forEach((el) => {
+    const key = el.dataset.progressItem;
+    if (progress[key]) {
+      el.classList.add("completed");
+    } else {
+      el.classList.remove("completed");
+    }
+  });
+  syncLessonLocks(progress);
+}
+
+function attachProgressButtons() {
+  document.querySelectorAll("[data-progress-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.closest("[data-progress-item]");
+      if (!target) {
+        return;
+      }
+      const key = target.dataset.progressItem;
+      const progress = loadProgress();
+      progress[key] = !progress[key];
+      saveProgress(progress);
+      syncProgressUI();
+    });
+  });
+}
+
+function isLessonUnlocked(lessonId, progress) {
+  const prereqs = lessonPrereqs[lessonId] || [];
+  return prereqs.every((req) => progress[req]);
+}
+
+function syncLessonLocks(progress) {
+  document.querySelectorAll("[data-lesson-id]").forEach((card) => {
+    const lessonId = card.dataset.lessonId;
+    const unlocked = isLessonUnlocked(lessonId, progress);
+    card.classList.toggle("locked", !unlocked);
+    const startBtn = card.querySelector("[data-start-lesson]");
+    if (startBtn) {
+      startBtn.setAttribute("aria-disabled", String(!unlocked));
+      startBtn.dataset.locked = String(!unlocked);
+      const labelKey = unlocked ? "data-label-unlocked" : "data-label-locked";
+      const langKey = state.language === "hi" ? `${labelKey}-hi` : `${labelKey}-en`;
+      startBtn.textContent = startBtn.getAttribute(langKey) || startBtn.getAttribute(labelKey);
+    }
+  });
+}
+
+function getLessonLabel(lessonId) {
+  const entry = lessonLabels[lessonId];
+  if (!entry) {
+    return lessonId;
+  }
+  return state.language === "hi" ? entry.hi : entry.en;
+}
+
+function showLessonPlayer(card) {
+  const player = document.getElementById("lessonPlayer");
+  if (!player) {
+    return;
+  }
+  const title = card.querySelector("h3");
+  const desc = card.querySelector("p");
+  const media = card.querySelector(".video-placeholder");
+  const playerTitle = document.getElementById("lessonPlayerTitle");
+  const playerDesc = document.getElementById("lessonPlayerDesc");
+  const playerMedia = document.getElementById("lessonPlayerMedia");
+
+  if (playerTitle && title) {
+    playerTitle.textContent = title.textContent;
+  }
+  if (playerDesc && desc) {
+    playerDesc.textContent = desc.textContent;
+  }
+  if (playerMedia && media) {
+    const mediaMap = loadLessonMedia();
+    const lessonId = card.dataset.lessonId;
+    const url = mediaMap[lessonId];
+    if (url) {
+      setVideoPreviewFromUrl(playerMedia, url);
+    } else {
+      playerMedia.textContent = media.textContent;
+    }
+  }
+
+  player.classList.remove("hidden");
+  player.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function attachStartLessonButtons() {
+  document.querySelectorAll("[data-start-lesson]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest("[data-lesson-id]");
+      if (!card) {
+        return;
+      }
+      const lessonId = card.dataset.lessonId;
+      const progress = loadProgress();
+      const unlocked = isLessonUnlocked(lessonId, progress);
+      if (!unlocked) {
+        const prereqs = (lessonPrereqs[lessonId] || []).map(getLessonLabel);
+        const message = state.language === "hi"
+          ? `पहले ये लेसन पूरे करें: ${prereqs.join(", ")}`
+          : `Complete these lessons first: ${prereqs.join(", ")}`;
+        alert(message);
+        return;
+      }
+      showLessonPlayer(card);
+    });
+  });
+  const voiceBtn = document.getElementById("lessonPlayerVoice");
+  if (voiceBtn) {
+    voiceBtn.addEventListener("click", () => {
+      const desc = document.getElementById("lessonPlayerDesc");
+      if (desc) {
+        speakText(desc.textContent);
+      }
+    });
+  }
+  const markBtn = document.getElementById("lessonPlayerMark");
+  if (markBtn) {
+    markBtn.addEventListener("click", () => {
+      const title = document.getElementById("lessonPlayerTitle");
+      if (!title) {
+        return;
+      }
+      const card = Array.from(document.querySelectorAll("[data-lesson-id]")).find((el) => {
+        const heading = el.querySelector("h3");
+        return heading && heading.textContent === title.textContent;
+      });
+      if (!card) {
+        return;
+      }
+      const key = card.dataset.progressItem;
+      const progress = loadProgress();
+      progress[key] = true;
+      saveProgress(progress);
+      syncProgressUI();
+    });
+  }
+}
+
+function ensureToastContainer() {
+  let container = document.querySelector(".toast-container");
+  if (container) {
+    return container;
+  }
+  container = document.createElement("div");
+  container.className = "toast-container";
+  document.body.appendChild(container);
+  return container;
+}
+
+function showToast(message) {
+  const container = ensureToastContainer();
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = message;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(8px)";
+  }, 2200);
+  setTimeout(() => {
+    toast.remove();
+  }, 2600);
+}
+
+function downloadFile(filename, content, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function generateSimplePdf(text) {
+  const header = "%PDF-1.4\n";
+  const body = "1 0 obj<< /Type /Catalog /Pages 2 0 R >>endobj\n" +
+    "2 0 obj<< /Type /Pages /Kids [3 0 R] /Count 1 >>endobj\n" +
+    "3 0 obj<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources<< /Font<< /F1 5 0 R >> >> >>endobj\n" +
+    `4 0 obj<< /Length ${text.length + 73} >>stream\nBT /F1 18 Tf 50 740 Td (${text}) Tj ET\nendstream\nendobj\n` +
+    "5 0 obj<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>endobj\n";
+  const xref = "xref\n0 6\n0000000000 65535 f \n";
+  const trailer = "trailer<< /Size 6 /Root 1 0 R >>\nstartxref\n";
+  const startxref = header.length + body.length + xref.length;
+  return `${header}${body}${xref}${trailer}${startxref}\n%%EOF`;
+}
+
+function attachGenericButtonActions() {
+  document.querySelectorAll("button.button").forEach((btn) => {
+    const ignore = btn.hasAttribute("data-lang")
+      || btn.hasAttribute("data-age")
+      || btn.hasAttribute("data-tts")
+      || btn.hasAttribute("data-progress-toggle")
+      || btn.hasAttribute("data-start-lesson")
+      || btn.hasAttribute("data-add-profile")
+      || btn.hasAttribute("data-add-lesson-video")
+      || btn.hasAttribute("data-action")
+      || btn.id === "lessonPlayerVoice"
+      || btn.id === "lessonPlayerMark";
+    if (ignore) {
+      return;
+    }
+    btn.addEventListener("click", () => {
+      const label = btn.dataset.en || btn.textContent.trim();
+      if (label === "Enroll") {
+        showToast("Enrollment saved (demo)");
+        return;
+      }
+      if (label === "Start Quiz") {
+        const quiz = document.getElementById("quiz");
+        if (quiz) {
+          quiz.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          window.location.href = "games.html#quiz";
+        }
+        return;
+      }
+      if (label === "Play") {
+        const quiz = document.getElementById("quiz");
+        const gameCard = btn.closest("[data-progress-item]");
+        const gameTitle = gameCard?.querySelector("h3")?.textContent?.trim();
+        if (gameTitle) {
+          showToast(`${gameTitle} launched (demo)`);
+        } else {
+          showToast("Launching game (demo)");
+        }
+        if (quiz) {
+          quiz.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        return;
+      }
+      if (label === "Daily Plan") {
+        window.location.href = "daily.html";
+        return;
+      }
+      if (label === "Add video") {
+        const media = document.getElementById("mediaLibrary");
+        if (media) {
+          media.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        return;
+      }
+      if (label === "Add URL") {
+        const input = btn.closest(".media-card")?.querySelector("[data-video-input]");
+        if (input) {
+          input.focus();
+        }
+        return;
+      }
+      if (label === "Save") {
+        const textArea = btn.closest(".card")?.querySelector("textarea");
+        if (textArea) {
+          localStorage.setItem(`devedu_kindness_${state.profile}`, textArea.value);
+          showToast("Saved!");
+        }
+        return;
+      }
+      if (label === "View Details") {
+        showToast("Details opened (demo)");
+        return;
+      }
+      if (label === "Plan Week") {
+        window.location.href = "daily.html";
+        return;
+      }
+      if (label === "Download Report") {
+        downloadFile("report.txt", "DevEdu report (demo)", "text/plain");
+        return;
+      }
+      if (label === "Download PDF") {
+        const pdf = generateSimplePdf("DevEdu Weekly Summary");
+        downloadFile("weekly-report.pdf", pdf, "application/pdf");
+        return;
+      }
+      if (label === "Download CSV") {
+        downloadFile("progress.csv", "subject,score\nmath,78\nscience,64\n", "text/csv");
+        return;
+      }
+      if (label === "Export") {
+        downloadFile("portfolio.json", JSON.stringify({ project: "DevEdu", status: "demo" }, null, 2), "application/json");
+        return;
+      }
+      if (label === "Login") {
+        showToast("Login successful (demo)");
+        window.location.href = "parents.html";
+        return;
+      }
+      if (label === "Help") {
+        showToast("Support is on the way!");
+        return;
+      }
+      if (label === "Open Dashboard") {
+        window.location.href = "parents.html";
+        return;
+      }
+      showToast("Action completed (demo)");
+    });
+  });
+}
+
+function attachActionButtons() {
+  document.querySelectorAll("[data-action='go-learn']").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      window.location.href = "learn.html";
+    });
+  });
+  document.querySelectorAll("[data-action='open-trail']").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      window.location.href = "daily.html";
+    });
+  });
+}
+
+function attachDropZones() {
+  document.querySelectorAll("[data-drop-zone]").forEach((zone) => {
+    const input = zone.querySelector("input[type='file']");
+    const frame = zone.closest(".media-card")?.querySelector(".video-frame");
+    zone.addEventListener("click", () => input && input.click());
+    zone.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      zone.style.background = "#fff1db";
+    });
+    zone.addEventListener("dragleave", () => {
+      zone.style.background = "#fffaf1";
+    });
+    zone.addEventListener("drop", (event) => {
+      event.preventDefault();
+      zone.style.background = "#fffaf1";
+      const files = event.dataTransfer.files;
+      if (files && files.length) {
+        zone.querySelector(".drop-label").textContent = files[0].name;
+        if (frame) {
+          setVideoPreviewFromFile(frame, files[0]);
+        }
+      }
+    });
+    if (input) {
+      input.addEventListener("change", () => {
+        if (input.files && input.files.length) {
+          zone.querySelector(".drop-label").textContent = input.files[0].name;
+          if (frame) {
+            setVideoPreviewFromFile(frame, input.files[0]);
+          }
+        }
+      });
+    }
+  });
+}
+
+function init() {
+  loadState();
+  renderProfileOptions();
+  loadVoices();
+  if (window.speechSynthesis) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  document.querySelectorAll("[data-lang]").forEach((btn) => {
+    btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
+  });
+
+  const filters = ["ageFilter", "boardFilter", "lessonSearch"].map((id) => document.getElementById(id));
+  filters.forEach((el) => el && el.addEventListener("input", filterLessons));
+
+  document.querySelectorAll("[data-age]").forEach((btn) => {
+    btn.addEventListener("click", () => setAgeGroup(btn.dataset.age));
+  });
+
+  attachTtsControls();
+  attachProfileControls();
+  attachNewProfileControls();
+  attachProfileForm();
+  attachDropZones();
+  attachVideoUrlInputs();
+  attachProgressButtons();
+  attachStartLessonButtons();
+  attachActionButtons();
+  attachGenericButtonActions();
+  attachLessonVideoButtons();
+  updateLessonMediaPreviews();
+  renderResourceLists();
+  renderBookLists();
+  initTutorPanel();
+  setLanguage(state.language);
+  setAgeGroup(state.ageGroup);
+  syncProfileUI();
+  filterAgeGroupElements();
+}
+
+document.addEventListener("DOMContentLoaded", init);

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parents Dashboard — DevEdu India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topnav glass">
+    <div class="nav-left"><button class="hamburger">☰</button><a href="index.html" class="brand-badge">🎓 DevEdu India</a></div>
+    <div class="nav-links"><a href="index.html">Home</a><a href="learn.html">Learn</a><a href="games.html">Games</a><a href="life.html">Life Skills</a><a href="creative.html">Creative</a><a href="health.html">Health</a><a href="career.html">Career</a><a href="stories.html">Stories</a><a href="daily.html">Daily Plan</a><a href="parents.html" class="active">Parents</a></div>
+    <div class="nav-right"><button data-theme-toggle class="icon-btn">🌙</button><button data-open-settings class="icon-btn">⚙️</button></div>
+  </nav>
+  <div class="mobile-drawer"><button class="drawer-close">✕</button><a href="index.html">🏠 Home</a><a href="learn.html">📚 Learn</a><a href="games.html">🎮 Games</a><a href="life.html">💡 Life Skills</a><a href="creative.html">🎨 Creative</a><a href="health.html">🧘 Health</a><a href="career.html">🗺️ Career</a><a href="stories.html">📖 Stories</a><a href="daily.html">📅 Daily Plan</a><a href="parents.html">👪 Parents</a></div>
+
+  <section class="control-bar glass">
+    <div class="control-group"><label>Profile</label><select data-profile-select></select></div>
+    <div class="control-group"><button data-lang="en" class="button small">EN</button><button data-lang="hi" class="button small secondary">हिंदी</button></div>
+  </section>
+
+  <section class="card glass reveal" style="text-align:center;">
+    <h1 class="i18n" data-en="👪 Parents Dashboard" data-hi="👪 अभिभावक डैशबोर्ड">👪 Parents Dashboard</h1>
+    <p class="i18n" data-en="Track your child's learning progress, achievements, and overall development." data-hi="अपने बच्चे की शिक्षा प्रगति, उपलब्धियां और समग्र विकास ट्रैक करें।">Track your child's progress and development.</p>
+  </section>
+
+  <!-- ACADEMIC PROGRESS -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="📊 Academic Progress" data-hi="📊 शैक्षणिक प्रगति">📊 Academic Progress</h2>
+    <div style="margin-top:1rem;">
+      <div style="margin-bottom:1rem;">
+        <div style="display:flex;justify-content:space-between;"><span class="i18n" data-en="Math" data-hi="गणित">Math</span><span data-metric-label="math"><span class="metric-value">0%</span></span></div>
+        <div class="progress" data-metric="math"><span></span></div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <div style="display:flex;justify-content:space-between;"><span class="i18n" data-en="Science" data-hi="विज्ञान">Science</span><span data-metric-label="science"><span class="metric-value">0%</span></span></div>
+        <div class="progress" data-metric="science"><span></span></div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <div style="display:flex;justify-content:space-between;"><span class="i18n" data-en="Languages" data-hi="भाषाएं">Languages</span><span data-metric-label="languages"><span class="metric-value">0%</span></span></div>
+        <div class="progress" data-metric="languages"><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="💝 Values & Character" data-hi="💝 मूल्य और चरित्र">💝 Values & Character</h2>
+    <div style="margin-top:1rem;">
+      <div style="margin-bottom:1rem;">
+        <div style="display:flex;justify-content:space-between;"><span>🤝 Empathy</span><span data-metric-label="empathy"><span class="metric-value">0%</span></span></div>
+        <div class="progress" data-metric="empathy"><span></span></div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <div style="display:flex;justify-content:space-between;"><span>✅ Responsibility</span><span data-metric-label="responsibility"><span class="metric-value">0%</span></span></div>
+        <div class="progress" data-metric="responsibility"><span></span></div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <div style="display:flex;justify-content:space-between;"><span>🛡️ Safety</span><span data-metric-label="safety"><span class="metric-value">0%</span></span></div>
+        <div class="progress" data-metric="safety"><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- XP & ACHIEVEMENTS -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🏅 XP & Level" data-hi="🏅 XP और स्तर">🏅 XP & Level</h2>
+    <div class="xp-section" style="padding:0;">
+      <div class="xp-bar"><div class="xp-fill"></div></div>
+      <div class="xp-info"><span class="xp-badge">⭐ Level <span class="xp-level">1</span></span><span class="xp-text">0/100 XP</span><span class="xp-badge">🔥 Streak: <span class="streak-count">0</span></span></div>
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <h2>🏆 Achievements Earned</h2>
+    <div class="achievement-grid"></div>
+  </section>
+
+  <!-- PROFILE SETTINGS -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="⚙️ Profile Settings" data-hi="⚙️ प्रोफ़ाइल सेटिंग्स">⚙️ Profile Settings</h2>
+    <div style="display:grid;gap:1rem;max-width:500px;margin-top:1rem;">
+      <div>
+        <label class="i18n" data-en="Nickname" data-hi="उपनाम">Nickname</label>
+        <input data-profile-field="nickname" style="width:100%;padding:.5rem;border-radius:8px;border:1px solid var(--border);" />
+      </div>
+      <div>
+        <label class="i18n" data-en="Learning Goal" data-hi="शिक्षा लक्ष्य">Learning Goal</label>
+        <input data-profile-field="goal" style="width:100%;padding:.5rem;border-radius:8px;border:1px solid var(--border);" />
+      </div>
+      <div>
+        <label class="i18n" data-en="Favorite Topic" data-hi="पसंदीदा विषय">Favorite Topic</label>
+        <input data-profile-field="favorite" style="width:100%;padding:.5rem;border-radius:8px;border:1px solid var(--border);" />
+      </div>
+      <div>
+        <label class="i18n" data-en="Learning Style" data-hi="सीखने की शैली">Learning Style</label>
+        <input data-profile-field="style" style="width:100%;padding:.5rem;border-radius:8px;border:1px solid var(--border);" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ADD PROFILE -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="➕ Add New Learner" data-hi="➕ नया शिक्षार्थी जोड़ें">➕ Add New Learner</h2>
+    <div class="profile-form" style="display:flex;gap:.5rem;align-items:center;margin-top:1rem;">
+      <input data-new-profile placeholder="Child's name…" maxlength="20" style="padding:.5rem;border-radius:8px;border:1px solid var(--border);flex:1;" />
+      <button data-add-profile class="button primary">Add</button>
+    </div>
+  </section>
+
+  <!-- EXPORT -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="📥 Export Reports" data-hi="📥 रिपोर्ट डाउनलोड करें">📥 Export Reports</h2>
+    <p class="i18n" data-en="Download your child's progress data." data-hi="अपने बच्चे के प्रगति डेटा डाउनलोड करें।">Download progress data.</p>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;">
+      <button class="button primary" data-en="Download PDF" data-hi="PDF डाउनलोड">Download PDF</button>
+      <button class="button secondary" data-en="Download CSV" data-hi="CSV डाउनलोड">Download CSV</button>
+      <button class="button" data-en="Export" data-hi="निर्यात" style="background:#eee;">Export JSON</button>
+    </div>
+  </section>
+
+  <!-- PARENT RESOURCES -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="📚 Parent Resources" data-hi="📚 अभिभावक संसाधन">📚 Parent Resources</h2>
+    <div class="resource-grid" data-resource-list="parent-guides"></div>
+  </section>
+
+  <!-- TIPS -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="💡 Parenting Tips" data-hi="💡 पेरेंटिंग टिप्स">💡 Parenting Tips</h2>
+    <div class="main-grid" style="margin-top:1rem;">
+      <div class="feature-card mini">
+        <span class="feature-icon">🗣️</span>
+        <h3>Communicate</h3>
+        <p>Talk with your child about their day, feelings, and interests. Listen actively.</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🎯</span>
+        <h3>Set Goals Together</h3>
+        <p>Help your child set achievable weekly learning goals. Celebrate progress!</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">📵</span>
+        <h3>Screen Time Balance</h3>
+        <p>Set healthy limits. Mix screen learning with outdoor play and reading.</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🌟</span>
+        <h3>Praise Effort</h3>
+        <p>Praise the effort, not just results. "You worked so hard!" builds resilience.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer><p style="text-align:center;">© 2025 DevEdu India 🇮🇳</p></footer>
+
+  <button class="ai-chat-toggle">🤖</button>
+  <div class="ai-chat hidden"><div class="ai-chat-header"><span>🤖 Guru</span><button class="ai-chat-close">✕</button></div><div class="ai-chat-messages"></div><div class="ai-chat-input"><input type="text" placeholder="Ask about your child's progress…" /><button>Send</button></div></div>
+  <div class="settings-overlay"></div>
+  <div class="settings-panel"><div class="settings-header"><h3>⚙️ Settings</h3><button data-close-settings class="icon-btn">✕</button></div><div class="settings-body"><div class="setting-item"><span>🌙 Dark Mode</span><button data-toggle-dark class="toggle-btn">Off</button></div><div class="setting-item"><span>📖 Dyslexia Font</span><button data-toggle-dyslexia class="toggle-btn">Off</button></div><div class="setting-item"><span>🎯 High Contrast</span><button data-toggle-contrast class="toggle-btn">Off</button></div></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

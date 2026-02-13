@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevEdu - Parent Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Hind:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          <div class="brand-badge"></div>
+          <div>
+            <div>DevEdu</div>
+            <small class="i18n" data-en="Parent Dashboard" data-hi="अभिभावक डैशबोर्ड">Parent Dashboard</small>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="i18n" data-en="Home" data-hi="होम">Home</a>
+          <a href="learn.html" class="i18n" data-en="Syllabus" data-hi="पाठ्यक्रम">Syllabus</a>
+          <a href="life.html" class="i18n" data-en="Life Skills" data-hi="जीवन कौशल">Life Skills</a>
+          <a href="games.html" class="i18n" data-en="Games" data-hi="खेल">Games</a>
+          <a href="daily.html" class="i18n" data-en="Daily Plan" data-hi="दैनिक योजना">Daily Plan</a>
+          <a href="parents.html" class="i18n" data-en="Parents" data-hi="अभिभावक">Parents</a>
+          <a href="auth.html" class="i18n" data-en="Login" data-hi="लॉगिन">Login</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="button secondary" data-lang="en">English</button>
+          <button class="button secondary" data-lang="hi">हिंदी</button>
+          <button class="button i18n" data-en="Download Report" data-hi="रिपोर्ट डाउनलोड करें">Download Report</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container section">
+      <div class="profile-bar">
+        <div class="card">
+          <h3 class="i18n" data-en="Learner Profile" data-hi="लर्नर प्रोफाइल">Learner Profile</h3>
+          <select data-profile-select>
+            <option value="Aarav">Aarav</option>
+            <option value="Anaya">Anaya</option>
+            <option value="Vihaan">Vihaan</option>
+          </select>
+        </div>
+        <div class="card">
+          <h3 class="i18n" data-en="Weekly Summary" data-hi="साप्ताहिक सारांश">Weekly Summary</h3>
+          <p class="i18n" data-en="12 lessons completed" data-hi="12 लेसन पूरे">12 lessons completed</p>
+        </div>
+      </div>
+      <section class="section">
+        <div class="ai-companion">
+          <div class="ai-bubble">
+            <h2 class="i18n" data-en="Family AI Insights" data-hi="परिवार एआई इनसाइट्स">Family AI Insights</h2>
+            <p data-personal="greeting">Hi learner! Today we will focus on your goal.</p>
+            <p class="i18n" data-en="Tip: Celebrate small wins to build confidence." data-hi="टिप: छोटे जीत का जश्न आत्मविश्वास बढ़ाता है।">Tip: Celebrate small wins to build confidence.</p>
+            <p data-personal="style">Your learning style: Visual.</p>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Update profile" data-hi="प्रोफाइल अपडेट">Update profile</h3>
+            <div class="profile-form">
+              <input data-new-profile placeholder="Add new learner name" />
+              <button class="button secondary i18n" data-add-profile data-en="Save name" data-hi="नाम सेव करें">Save name</button>
+              <input data-profile-field="nickname" placeholder="Nickname" />
+              <input data-profile-field="goal" placeholder="Learning goal" />
+              <input data-profile-field="favorite" placeholder="Favorite topic" />
+              <select data-profile-field="style">
+                <option value="Visual">Visual</option>
+                <option value="Play">Play</option>
+                <option value="Story">Story</option>
+                <option value="Debate">Debate</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+      <h1 class="i18n" data-en="Family Progress Hub" data-hi="परिवार प्रगति हब">Family Progress Hub</h1>
+      <p class="i18n" data-en="Track syllabus mastery, life skills, and weekly routines with a clear, simple view." data-hi="पाठ्यक्रम दक्षता, जीवन कौशल और साप्ताहिक रूटीन को साफ तरीके से देखें।">
+        Track syllabus mastery, life skills, and weekly routines with a clear, simple view.
+      </p>
+
+      <div class="age-toggle">
+        <button class="button secondary" data-age="3-7">3-7</button>
+        <button class="button secondary" data-age="8-12">8-12</button>
+        <button class="button secondary" data-age="13-18">13-18</button>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="card metric">
+          <h3 class="i18n" data-en="Syllabus Progress" data-hi="पाठ्यक्रम प्रगति">Syllabus Progress</h3>
+          <div class="bar-stack">
+            <div class="bar" data-metric="math"><span style="width: 78%"></span></div>
+            <small class="i18n" data-metric-label="math" data-en="Math" data-hi="गणित">Math <span class="metric-value">78%</span></small>
+            <div class="bar" data-metric="science"><span style="width: 64%"></span></div>
+            <small class="i18n" data-metric-label="science" data-en="Science" data-hi="विज्ञान">Science <span class="metric-value">64%</span></small>
+            <div class="bar" data-metric="languages"><span style="width: 72%"></span></div>
+            <small class="i18n" data-metric-label="languages" data-en="Languages" data-hi="भाषा">Languages <span class="metric-value">72%</span></small>
+          </div>
+        </div>
+        <div class="card metric">
+          <h3 class="i18n" data-en="Life Skills Tracker" data-hi="जीवन कौशल ट्रैकर">Life Skills Tracker</h3>
+          <div class="bar-stack">
+            <div class="bar" data-metric="empathy"><span style="width: 82%"></span></div>
+            <small class="i18n" data-metric-label="empathy" data-en="Empathy" data-hi="सहानुभूति">Empathy <span class="metric-value">82%</span></small>
+            <div class="bar" data-metric="responsibility"><span style="width: 69%"></span></div>
+            <small class="i18n" data-metric-label="responsibility" data-en="Responsibility" data-hi="जिम्मेदारी">Responsibility <span class="metric-value">69%</span></small>
+            <div class="bar" data-metric="safety"><span style="width: 75%"></span></div>
+            <small class="i18n" data-metric-label="safety" data-en="Digital Safety" data-hi="डिजिटल सुरक्षा">Digital Safety <span class="metric-value">75%</span></small>
+          </div>
+        </div>
+        <div class="card metric">
+          <h3 class="i18n" data-en="Weekly Routine" data-hi="साप्ताहिक रूटीन">Weekly Routine</h3>
+          <div class="bar-stack">
+            <div class="bar"><span style="width: 90%"></span></div>
+            <small class="i18n" data-en="Study streak 9/10" data-hi="स्टडी स्ट्रीक 9/10">Study streak 9/10</small>
+            <div class="bar"><span style="width: 60%"></span></div>
+            <small class="i18n" data-en="Outdoor play 3/5" data-hi="आउटडोर खेल 3/5">Outdoor play 3/5</small>
+            <div class="bar"><span style="width: 70%"></span></div>
+            <small class="i18n" data-en="Reading time 7/10" data-hi="रीडिंग टाइम 7/10">Reading time 7/10</small>
+          </div>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="feature">
+          <div class="card">
+            <h2 class="i18n" data-en="Teacher Notes" data-hi="शिक्षक नोट्स">Teacher Notes</h2>
+            <p class="i18n" data-en="Focus on fractions and Hindi reading fluency this week." data-hi="इस सप्ताह भिन्न और हिंदी पठन प्रवाह पर ध्यान दें।">
+              Focus on fractions and Hindi reading fluency this week.
+            </p>
+            <button class="button secondary i18n" data-en="View Details" data-hi="विवरण देखें">View Details</button>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Recommended Activities" data-hi="सुझाई गई गतिविधियां">Recommended Activities</h3>
+            <ul>
+              <li class="i18n" data-en="Family budget game" data-hi="परिवार बजट गेम">Family budget game</li>
+              <li class="i18n" data-en="Neighborhood clean-up walk" data-hi="पड़ोस साफ-सफाई वॉक">Neighborhood clean-up walk</li>
+              <li class="i18n" data-en="Science kitchen experiment" data-hi="रसोई विज्ञान प्रयोग">Science kitchen experiment</li>
+            </ul>
+            <button class="button i18n" data-en="Plan Week" data-hi="सप्ताह योजना">Plan Week</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="i18n" data-en="Exportable Reports" data-hi="एक्सपोर्ट रिपोर्ट">Exportable Reports</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="i18n" data-en="Weekly PDF" data-hi="साप्ताहिक PDF">Weekly PDF</h3>
+            <p class="i18n" data-en="Printable summary for parents and teachers." data-hi="अभिभावक और शिक्षक के लिए प्रिंटेबल सारांश।">Printable summary for parents and teachers.</p>
+            <button class="button i18n" data-en="Download PDF" data-hi="PDF डाउनलोड करें">Download PDF</button>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Progress CSV" data-hi="प्रोग्रेस CSV">Progress CSV</h3>
+            <p class="i18n" data-en="Open in Excel or Sheets for analysis." data-hi="Excel या Sheets में खोलें।">Open in Excel or Sheets for analysis.</p>
+            <button class="button i18n" data-en="Download CSV" data-hi="CSV डाउनलोड करें">Download CSV</button>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Portfolio" data-hi="पोर्टफोलियो">Portfolio</h3>
+            <p class="i18n" data-en="Collection of projects and creative work." data-hi="प्रोजेक्ट और क्रिएटिव काम का संग्रह।">Collection of projects and creative work.</p>
+            <button class="button i18n" data-en="Export" data-hi="एक्सपोर्ट">Export</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="i18n" data-en="Parent Resources" data-hi="अभिभावक संसाधन">Parent Resources</h2>
+        <p class="i18n" data-en="Approved resources to support learning at home." data-hi="घर पर सीखने के लिए अनुमोदित संसाधन।">
+          Approved resources to support learning at home.
+        </p>
+        <div class="resource-grid" data-resource-list="parent-guides"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="i18n" data-en="Strong families create strong learners." data-hi="मजबूत परिवार मजबूत शिक्षार्थी बनाते हैं।">Strong families create strong learners.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn — DevEdu India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="topnav glass">
+    <div class="nav-left">
+      <button class="hamburger" aria-label="Menu">☰</button>
+      <a href="index.html" class="brand-badge">🎓 DevEdu India</a>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="learn.html" class="active">Learn</a>
+      <a href="games.html">Games</a>
+      <a href="life.html">Life Skills</a>
+      <a href="creative.html">Creative</a>
+      <a href="health.html">Health</a>
+      <a href="career.html">Career</a>
+      <a href="stories.html">Stories</a>
+      <a href="daily.html">Daily Plan</a>
+      <a href="parents.html">Parents</a>
+    </div>
+    <div class="nav-right">
+      <button data-theme-toggle class="icon-btn">🌙</button>
+      <button data-open-settings class="icon-btn">⚙️</button>
+    </div>
+  </nav>
+  <div class="mobile-drawer">
+    <button class="drawer-close">✕</button>
+    <a href="index.html">🏠 Home</a><a href="learn.html">📚 Learn</a><a href="games.html">🎮 Games</a><a href="life.html">💡 Life Skills</a><a href="creative.html">🎨 Creative</a><a href="health.html">🧘 Health</a><a href="career.html">🗺️ Career</a><a href="stories.html">📖 Stories</a><a href="daily.html">📅 Daily Plan</a><a href="parents.html">👪 Parents</a>
+  </div>
+
+  <!-- Controls -->
+  <section class="control-bar glass">
+    <div class="control-group">
+      <label>Profile</label>
+      <select data-profile-select></select>
+    </div>
+    <div class="control-group">
+      <button data-lang="en" class="button small">EN</button>
+      <button data-lang="hi" class="button small secondary">हिंदी</button>
+    </div>
+    <div class="control-group">
+      <button data-age="3-7" class="button small secondary">3-7</button>
+      <button data-age="8-12" class="button small">8-12</button>
+      <button data-age="13-18" class="button small secondary">13-18</button>
+    </div>
+  </section>
+
+  <!-- XP -->
+  <section class="xp-section">
+    <div class="xp-bar"><div class="xp-fill"></div></div>
+    <div class="xp-info">
+      <span class="xp-badge">⭐ Level <span class="xp-level">1</span></span>
+      <span class="xp-text">0/100 XP</span>
+      <span class="xp-badge">🔥 <span class="streak-count">0</span></span>
+    </div>
+  </section>
+
+  <!-- PAGE HEADER -->
+  <section class="card glass reveal" style="text-align:center;">
+    <h1 class="i18n" data-en="📚 Learning Hub" data-hi="📚 शिक्षा केंद्र">📚 Learning Hub</h1>
+    <p class="i18n" data-en="Master every subject step by step. Complete lessons to unlock the next level!" data-hi="हर विषय को चरणबद्ध तरीके से सीखें। अगला स्तर अनलॉक करें!">Master every subject step by step. Complete lessons to unlock the next level!</p>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🔍 Filter Lessons" data-hi="🔍 पाठ फ़िल्टर करें">🔍 Filter Lessons</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:.5rem;">
+      <select id="ageFilter" style="padding:.5rem;border-radius:8px;border:1px solid var(--border);">
+        <option value="all">All Ages</option>
+        <option value="3-7">3-7</option>
+        <option value="8-12">8-12</option>
+        <option value="13-18">13-18</option>
+      </select>
+      <select id="boardFilter" style="padding:.5rem;border-radius:8px;border:1px solid var(--border);">
+        <option value="all">All Boards</option>
+        <option value="cbse">CBSE</option>
+        <option value="icse">ICSE</option>
+        <option value="state">State Board</option>
+        <option value="ib">IB</option>
+      </select>
+      <input type="text" id="lessonSearch" placeholder="Search lessons…" style="padding:.5rem;border-radius:8px;border:1px solid var(--border);flex:1;min-width:150px;" />
+    </div>
+  </section>
+
+  <!-- LESSON CARDS -->
+  <section class="lesson-grid reveal">
+    <!-- Lesson 1 -->
+    <div class="lesson-card card" data-lesson-id="lesson-shapes" data-progress-item="lesson-shapes" data-age="3-7" data-board="cbse" data-age-group="all">
+      <div class="lesson-card-header" style="background:linear-gradient(135deg,#f2a900,#ffd166);padding:1rem;border-radius:12px 12px 0 0;">
+        <span style="font-size:2rem;">🔺</span>
+        <h3 class="i18n" data-en="Foundations — Shapes" data-hi="बुनियाद — आकार">Foundations — Shapes</h3>
+      </div>
+      <div style="padding:1rem;">
+        <p class="i18n" data-en="Learn circles, triangles, squares and more! Foundation for all math." data-hi="गोला, त्रिकोण, वर्ग और अधिक सीखें! सभी गणित की नींव।">Learn circles, triangles, squares and more!</p>
+        <div data-lesson-preview data-default-label="Video" class="video-frame" style="min-height:60px;margin:.5rem 0;"></div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <button data-start-lesson class="button primary small" data-label-unlocked-en="Start Lesson" data-label-unlocked-hi="पाठ शुरू करें" data-label-locked-en="🔒 Locked" data-label-locked-hi="🔒 बंद">Start Lesson</button>
+          <button data-progress-toggle class="button secondary small i18n" data-en="✅ Mark Done" data-hi="✅ पूरा हुआ">✅ Mark Done</button>
+          <button data-add-lesson-video class="button small" style="background:#eee;">🎬 Add Video</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 2 -->
+    <div class="lesson-card card" data-lesson-id="lesson-fractions" data-progress-item="lesson-fractions" data-age="8-12" data-board="cbse" data-age-group="8-12,13-18">
+      <div class="lesson-card-header" style="background:linear-gradient(135deg,#0d7377,#14a3c7);padding:1rem;border-radius:12px 12px 0 0;color:#fff;">
+        <span style="font-size:2rem;">🔢</span>
+        <h3 class="i18n" data-en="Math — Fractions" data-hi="गणित — भिन्न">Math — Fractions</h3>
+      </div>
+      <div style="padding:1rem;">
+        <p class="i18n" data-en="Halves, quarters and more. Essential number skills!" data-hi="आधा, चौथाई और अधिक। संख्या कौशल!">Halves, quarters and more.</p>
+        <div data-lesson-preview data-default-label="Video" class="video-frame" style="min-height:60px;margin:.5rem 0;"></div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <button data-start-lesson class="button primary small" data-label-unlocked-en="Start Lesson" data-label-unlocked-hi="पाठ शुरू करें" data-label-locked-en="🔒 Locked" data-label-locked-hi="🔒 बंद">Start Lesson</button>
+          <button data-progress-toggle class="button secondary small i18n" data-en="✅ Mark Done" data-hi="✅ पूरा हुआ">✅ Mark Done</button>
+          <button data-add-lesson-video class="button small" style="background:#eee;">🎬 Add Video</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 3 -->
+    <div class="lesson-card card" data-lesson-id="lesson-hindi-reading" data-progress-item="lesson-hindi-reading" data-age="8-12" data-board="cbse" data-age-group="all">
+      <div class="lesson-card-header" style="background:linear-gradient(135deg,#e4572e,#f78154);padding:1rem;border-radius:12px 12px 0 0;color:#fff;">
+        <span style="font-size:2rem;">📝</span>
+        <h3 class="i18n" data-en="Languages — Hindi Reading" data-hi="भाषा — हिंदी पठन">Languages — Hindi Reading</h3>
+      </div>
+      <div style="padding:1rem;">
+        <p class="i18n" data-en="Read Hindi passages, learn grammar and vocabulary." data-hi="हिंदी अनुच्छेद पढ़ें, व्याकरण और शब्दावली सीखें।">Read Hindi passages, learn grammar and vocabulary.</p>
+        <div data-lesson-preview data-default-label="Video" class="video-frame" style="min-height:60px;margin:.5rem 0;"></div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <button data-start-lesson class="button primary small" data-label-unlocked-en="Start Lesson" data-label-unlocked-hi="पाठ शुरू करें" data-label-locked-en="🔒 Locked" data-label-locked-hi="🔒 बंद">Start Lesson</button>
+          <button data-progress-toggle class="button secondary small i18n" data-en="✅ Mark Done" data-hi="✅ पूरा हुआ">✅ Mark Done</button>
+          <button data-add-lesson-video class="button small" style="background:#eee;">🎬 Add Video</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 4 -->
+    <div class="lesson-card card" data-lesson-id="lesson-living" data-progress-item="lesson-living" data-age="8-12" data-board="cbse" data-age-group="8-12">
+      <div class="lesson-card-header" style="background:linear-gradient(135deg,#1f9a6e,#30d98b);padding:1rem;border-radius:12px 12px 0 0;color:#fff;">
+        <span style="font-size:2rem;">🌿</span>
+        <h3 class="i18n" data-en="Science — Living Things" data-hi="विज्ञान — जीवित चीजें">Science — Living Things</h3>
+      </div>
+      <div style="padding:1rem;">
+        <p class="i18n" data-en="Cells, plants, animals and ecosystems." data-hi="कोशिकाएं, पौधे, जानवर और पारिस्थितिकी तंत्र।">Cells, plants, animals and ecosystems.</p>
+        <div data-lesson-preview data-default-label="Video" class="video-frame" style="min-height:60px;margin:.5rem 0;"></div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <button data-start-lesson class="button primary small" data-label-unlocked-en="Start Lesson" data-label-unlocked-hi="पाठ शुरू करें" data-label-locked-en="🔒 Locked" data-label-locked-hi="🔒 बंद">Start Lesson</button>
+          <button data-progress-toggle class="button secondary small i18n" data-en="✅ Mark Done" data-hi="✅ पूरा हुआ">✅ Mark Done</button>
+          <button data-add-lesson-video class="button small" style="background:#eee;">🎬 Add Video</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 5 -->
+    <div class="lesson-card card" data-lesson-id="lesson-algebra" data-progress-item="lesson-algebra" data-age="13-18" data-board="cbse" data-age-group="13-18">
+      <div class="lesson-card-header" style="background:linear-gradient(135deg,#1976d2,#42a5f5);padding:1rem;border-radius:12px 12px 0 0;color:#fff;">
+        <span style="font-size:2rem;">➕</span>
+        <h3 class="i18n" data-en="Math — Algebra" data-hi="गणित — बीजगणित">Math — Algebra</h3>
+      </div>
+      <div style="padding:1rem;">
+        <p class="i18n" data-en="Variables, equations and expressions. Powers of x!" data-hi="चर, समीकरण और व्यंजक। x की शक्ति!">Variables, equations and expressions.</p>
+        <div data-lesson-preview data-default-label="Video" class="video-frame" style="min-height:60px;margin:.5rem 0;"></div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <button data-start-lesson class="button primary small" data-label-unlocked-en="Start Lesson" data-label-unlocked-hi="पाठ शुरू करें" data-label-locked-en="🔒 Locked" data-label-locked-hi="🔒 बंद">Start Lesson</button>
+          <button data-progress-toggle class="button secondary small i18n" data-en="✅ Mark Done" data-hi="✅ पूरा हुआ">✅ Mark Done</button>
+          <button data-add-lesson-video class="button small" style="background:#eee;">🎬 Add Video</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 6 -->
+    <div class="lesson-card card" data-lesson-id="lesson-constitution" data-progress-item="lesson-constitution" data-age="13-18" data-board="cbse" data-age-group="13-18">
+      <div class="lesson-card-header" style="background:linear-gradient(135deg,#7b1fa2,#ba68c8);padding:1rem;border-radius:12px 12px 0 0;color:#fff;">
+        <span style="font-size:2rem;">📜</span>
+        <h3 class="i18n" data-en="Civics — Constitution" data-hi="नागरिक शास्त्र — संविधान">Civics — Constitution</h3>
+      </div>
+      <div style="padding:1rem;">
+        <p class="i18n" data-en="Fundamental rights, duties and how India is governed." data-hi="मौलिक अधिकार, कर्तव्य और भारत कैसे शासित होता है।">Fundamental rights, duties and the governance of India.</p>
+        <div data-lesson-preview data-default-label="Video" class="video-frame" style="min-height:60px;margin:.5rem 0;"></div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <button data-start-lesson class="button primary small" data-label-unlocked-en="Start Lesson" data-label-unlocked-hi="पाठ शुरू करें" data-label-locked-en="🔒 Locked" data-label-locked-hi="🔒 बंद">Start Lesson</button>
+          <button data-progress-toggle class="button secondary small i18n" data-en="✅ Mark Done" data-hi="✅ पूरा हुआ">✅ Mark Done</button>
+          <button data-add-lesson-video class="button small" style="background:#eee;">🎬 Add Video</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lesson 7 -->
+    <div class="lesson-card card" data-lesson-id="lesson-economy" data-progress-item="lesson-economy" data-age="13-18" data-board="cbse" data-age-group="13-18">
+      <div class="lesson-card-header" style="background:linear-gradient(135deg,#f57c00,#ffa726);padding:1rem;border-radius:12px 12px 0 0;color:#fff;">
+        <span style="font-size:2rem;">💰</span>
+        <h3 class="i18n" data-en="Economics — Basics" data-hi="अर्थशास्त्र — बुनियाद">Economics — Basics</h3>
+      </div>
+      <div style="padding:1rem;">
+        <p class="i18n" data-en="Supply, demand, money and India's economy." data-hi="आपूर्ति, मांग, पैसा और भारतीय अर्थव्यवस्था।">Supply, demand, money and India's economy.</p>
+        <div data-lesson-preview data-default-label="Video" class="video-frame" style="min-height:60px;margin:.5rem 0;"></div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <button data-start-lesson class="button primary small" data-label-unlocked-en="Start Lesson" data-label-unlocked-hi="पाठ शुरू करें" data-label-locked-en="🔒 Locked" data-label-locked-hi="🔒 बंद">Start Lesson</button>
+          <button data-progress-toggle class="button secondary small i18n" data-en="✅ Mark Done" data-hi="✅ पूरा हुआ">✅ Mark Done</button>
+          <button data-add-lesson-video class="button small" style="background:#eee;">🎬 Add Video</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LESSON PLAYER -->
+  <section id="lessonPlayer" class="card hidden" style="max-width:800px;margin:2rem auto;">
+    <h2 id="lessonPlayerTitle">Lesson</h2>
+    <p id="lessonPlayerDesc"></p>
+    <div style="display:flex;gap:.5rem;margin-top:1rem;">
+      <button id="lessonPlayerVoice" class="button secondary">🔊 Listen</button>
+      <button id="lessonPlayerMark" class="button primary">✅ Mark Complete</button>
+    </div>
+  </section>
+
+  <!-- VIDEO RESOURCES -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🎬 Video Resources" data-hi="🎬 वीडियो संसाधन">🎬 Video Resources</h2>
+    <h3 class="i18n" data-en="Grades 6-8" data-hi="कक्षा 6-8">Grades 6-8</h3>
+    <div class="resource-grid" data-resource-list="videos-6-8"></div>
+    <h3 class="i18n" data-en="Grades 9-10" data-hi="कक्षा 9-10" style="margin-top:1rem;">Grades 9-10</h3>
+    <div class="resource-grid" data-resource-list="videos-9-10"></div>
+    <h3 class="i18n" data-en="Grades 11-12" data-hi="कक्षा 11-12" style="margin-top:1rem;">Grades 11-12</h3>
+    <div class="resource-grid" data-resource-list="videos-11-12"></div>
+  </section>
+
+  <!-- BOOK RESOURCES -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="📚 Book Resources" data-hi="📚 पुस्तक संसाधन">📚 Book Resources</h2>
+    <div class="resource-grid" data-book-list="books-6-8"></div>
+    <div class="resource-grid" data-book-list="books-9-10" style="margin-top:1rem;"></div>
+    <div class="resource-grid" data-book-list="books-11-12" style="margin-top:1rem;"></div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="card reveal">
+    <h2>🏆 Achievements</h2>
+    <div class="achievement-grid"></div>
+  </section>
+
+  <footer>
+    <p style="text-align:center;">© 2025 DevEdu India 🇮🇳</p>
+  </footer>
+
+  <!-- AI Chat -->
+  <button class="ai-chat-toggle">🤖</button>
+  <div class="ai-chat hidden">
+    <div class="ai-chat-header"><span>🤖 Guru</span><button class="ai-chat-close">✕</button></div>
+    <div class="ai-chat-messages"></div>
+    <div class="ai-chat-input"><input type="text" placeholder="Ask me anything…" /><button>Send</button></div>
+  </div>
+
+  <!-- Settings -->
+  <div class="settings-overlay"></div>
+  <div class="settings-panel">
+    <div class="settings-header"><h3>⚙️ Settings</h3><button data-close-settings class="icon-btn">✕</button></div>
+    <div class="settings-body">
+      <div class="setting-item"><span>🌙 Dark Mode</span><button data-toggle-dark class="toggle-btn">Off</button></div>
+      <div class="setting-item"><span>📖 Dyslexia Font</span><button data-toggle-dyslexia class="toggle-btn">Off</button></div>
+      <div class="setting-item"><span>🎯 High Contrast</span><button data-toggle-contrast class="toggle-btn">Off</button></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

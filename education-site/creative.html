@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Studio — DevEdu India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topnav glass">
+    <div class="nav-left"><button class="hamburger">☰</button><a href="index.html" class="brand-badge">🎓 DevEdu India</a></div>
+    <div class="nav-links"><a href="index.html">Home</a><a href="learn.html">Learn</a><a href="games.html">Games</a><a href="life.html">Life Skills</a><a href="creative.html" class="active">Creative</a><a href="health.html">Health</a><a href="career.html">Career</a><a href="stories.html">Stories</a><a href="daily.html">Daily Plan</a><a href="parents.html">Parents</a></div>
+    <div class="nav-right"><button data-theme-toggle class="icon-btn">🌙</button><button data-open-settings class="icon-btn">⚙️</button></div>
+  </nav>
+  <div class="mobile-drawer"><button class="drawer-close">✕</button><a href="index.html">🏠 Home</a><a href="learn.html">📚 Learn</a><a href="games.html">🎮 Games</a><a href="life.html">💡 Life Skills</a><a href="creative.html">🎨 Creative</a><a href="health.html">🧘 Health</a><a href="career.html">🗺️ Career</a><a href="stories.html">📖 Stories</a><a href="daily.html">📅 Daily Plan</a><a href="parents.html">👪 Parents</a></div>
+
+  <section class="control-bar glass">
+    <div class="control-group"><label>Profile</label><select data-profile-select></select></div>
+    <div class="control-group"><button data-lang="en" class="button small">EN</button><button data-lang="hi" class="button small secondary">हिंदी</button></div>
+    <div class="control-group"><button data-age="3-7" class="button small secondary">3-7</button><button data-age="8-12" class="button small">8-12</button><button data-age="13-18" class="button small secondary">13-18</button></div>
+  </section>
+
+  <section class="xp-section"><div class="xp-bar"><div class="xp-fill"></div></div><div class="xp-info"><span class="xp-badge">⭐ Level <span class="xp-level">1</span></span><span class="xp-text">0/100 XP</span><span class="xp-badge">🔥 <span class="streak-count">0</span></span></div></section>
+
+  <section class="card glass reveal" style="text-align:center;">
+    <h1 class="i18n" data-en="🎨 Creative Studio" data-hi="🎨 क्रिएटिव स्टूडियो">🎨 Creative Studio</h1>
+    <p class="i18n" data-en="Express yourself! Draw, code, make music, and create." data-hi="अभिव्यक्त करें! ड्रॉ करें, कोड लिखें, संगीत बनाएं और बनाएं।">Express yourself! Draw, code, make music, and create.</p>
+  </section>
+
+  <!-- DRAWING CANVAS -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🖌️ Drawing Canvas" data-hi="🖌️ ड्राइंग कैनवास">🖌️ Drawing Canvas</h2>
+    <p class="i18n" data-en="Let your imagination fly! Draw anything you want." data-hi="कल्पना को उड़ान दें! जो चाहें वो बनाएं।">Let your imagination fly!</p>
+    <div class="draw-container" style="margin-top:1rem;">
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:.5rem;">
+        <label>Color:</label>
+        <input type="color" id="drawColor" value="#1976d2" style="width:40px;height:35px;border:none;cursor:pointer;" />
+        <label>Size:</label>
+        <input type="range" id="drawSize" min="1" max="20" value="3" style="width:100px;" />
+        <button id="clearCanvas" class="button secondary small">🗑️ Clear</button>
+        <button id="saveCanvas" class="button primary small">💾 Save</button>
+      </div>
+      <canvas id="drawCanvas" style="width:100%;border:2px solid var(--border);border-radius:12px;background:#fff;cursor:crosshair;touch-action:none;"></canvas>
+    </div>
+  </section>
+
+  <!-- CODING SANDBOX -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="💻 Coding Sandbox" data-hi="💻 कोडिंग सैंडबॉक्स">💻 Coding Sandbox</h2>
+    <p class="i18n" data-en="Write JavaScript code and see it run instantly! Learn programming by doing." data-hi="JavaScript कोड लिखें और तुरंत चलता देखें! करके सीखें।">Write JavaScript code and run it instantly!</p>
+    <div class="code-sandbox" style="margin-top:1rem;">
+      <div style="display:flex;gap:.5rem;margin-bottom:.5rem;flex-wrap:wrap;">
+        <button id="runCode" class="button primary small">▶️ Run Code</button>
+        <span style="opacity:.5;font-size:.85rem;">Try: console.log("Hello India! 🇮🇳")</span>
+      </div>
+      <textarea id="codeEditor" spellcheck="false" style="width:100%;min-height:180px;font-family:'Fira Code',monospace;font-size:.9rem;padding:1rem;background:#1e1e2e;color:#cdd6f4;border-radius:10px;border:none;resize:vertical;tab-size:2;">// Welcome to DevEdu Coding! 🎉
+// Try writing your first program:
+
+let name = "India";
+console.log("Hello, " + name + "! 🇮🇳");
+
+// Math is fun!
+for (let i = 1; i <= 5; i++) {
+  console.log(i + " × 7 = " + (i * 7));
+}
+
+console.log("Keep coding! 💻");</textarea>
+      <pre id="codeOutput" style="min-height:80px;padding:1rem;background:#11111b;color:#a6e3a1;border-radius:10px;margin-top:.5rem;font-family:monospace;overflow-x:auto;white-space:pre-wrap;"></pre>
+    </div>
+    <div style="margin-top:1rem;">
+      <h3 class="i18n" data-en="🎯 Coding Challenges" data-hi="🎯 कोडिंग चुनौतियां">🎯 Coding Challenges</h3>
+      <div class="main-grid" style="margin-top:.5rem;">
+        <div class="feature-card mini" data-age-group="3-7">
+          <span class="feature-icon">🌟</span>
+          <h3>Print Your Name</h3>
+          <p>Use console.log("Your Name") to print your name!</p>
+        </div>
+        <div class="feature-card mini" data-age-group="8-12">
+          <span class="feature-icon">🔢</span>
+          <h3>Multiplication Table</h3>
+          <p>Write a loop to print the 9× table.</p>
+        </div>
+        <div class="feature-card mini" data-age-group="13-18">
+          <span class="feature-icon">🧮</span>
+          <h3>Fibonacci</h3>
+          <p>Print the first 10 Fibonacci numbers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC MAKER -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🎵 Music Maker" data-hi="🎵 संगीत निर्माता">🎵 Music Maker</h2>
+    <p class="i18n" data-en="Click the keys to play music! Create your own melody." data-hi="कुंजियों पर क्लिक करके संगीत बजाएं! अपनी धुन बनाएं।">Click the keys to play music!</p>
+    <div class="piano-keys" style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-top:1rem;"></div>
+  </section>
+
+  <!-- STORY WRITER -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="✏️ Story Writer" data-hi="✏️ कहानी लेखक">✏️ Story Writer</h2>
+    <p class="i18n" data-en="Write your own story! Let your creativity flow." data-hi="अपनी कहानी लिखें! रचनात्मकता को बहने दें।">Write your own story!</p>
+    <input id="storyTitle" placeholder="Story Title…" style="width:100%;padding:.6rem;margin:.5rem 0;border-radius:8px;border:1px solid var(--border);font-size:1.1rem;" />
+    <textarea id="storyText" placeholder="Once upon a time in India…" style="width:100%;min-height:150px;padding:.8rem;border-radius:10px;border:1px solid var(--border);font-family:inherit;font-size:1rem;resize:vertical;"></textarea>
+    <div style="display:flex;gap:.5rem;margin-top:.5rem;">
+      <button class="button primary" onclick="const t=document.getElementById('storyTitle').value,s=document.getElementById('storyText').value;if(t&&s){localStorage.setItem('devedu_my_story',JSON.stringify({title:t,story:s}));showToast('Story saved! 📖','success');awardXP(15,'Story written!');}">💾 Save Story</button>
+      <button class="button secondary" onclick="const d=JSON.parse(localStorage.getItem('devedu_my_story')||'{}');if(d.title){document.getElementById('storyTitle').value=d.title;document.getElementById('storyText').value=d.story;showToast('Story loaded!');}">📂 Load Last</button>
+    </div>
+  </section>
+
+  <section class="card reveal"><h2>🏆 Achievements</h2><div class="achievement-grid"></div></section>
+
+  <footer><p style="text-align:center;">© 2025 DevEdu India 🇮🇳</p></footer>
+
+  <button class="ai-chat-toggle">🤖</button>
+  <div class="ai-chat hidden"><div class="ai-chat-header"><span>🤖 Guru</span><button class="ai-chat-close">✕</button></div><div class="ai-chat-messages"></div><div class="ai-chat-input"><input type="text" placeholder="Ask me anything…" /><button>Send</button></div></div>
+  <div class="settings-overlay"></div>
+  <div class="settings-panel"><div class="settings-header"><h3>⚙️ Settings</h3><button data-close-settings class="icon-btn">✕</button></div><div class="settings-body"><div class="setting-item"><span>🌙 Dark Mode</span><button data-toggle-dark class="toggle-btn">Off</button></div><div class="setting-item"><span>📖 Dyslexia Font</span><button data-toggle-dyslexia class="toggle-btn">Off</button></div><div class="setting-item"><span>🎯 High Contrast</span><button data-toggle-contrast class="toggle-btn">Off</button></div></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

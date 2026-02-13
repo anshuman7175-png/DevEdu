@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevEdu - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Hind:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          <div class="brand-badge"></div>
+          <div>
+            <div>DevEdu</div>
+            <small class="i18n" data-en="Login" data-hi="लॉगिन">Login</small>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="i18n" data-en="Home" data-hi="होम">Home</a>
+          <a href="learn.html" class="i18n" data-en="Syllabus" data-hi="पाठ्यक्रम">Syllabus</a>
+          <a href="life.html" class="i18n" data-en="Life Skills" data-hi="जीवन कौशल">Life Skills</a>
+          <a href="games.html" class="i18n" data-en="Games" data-hi="खेल">Games</a>
+          <a href="daily.html" class="i18n" data-en="Daily Plan" data-hi="दैनिक योजना">Daily Plan</a>
+          <a href="parents.html" class="i18n" data-en="Parents" data-hi="अभिभावक">Parents</a>
+          <a href="auth.html" class="i18n" data-en="Login" data-hi="लॉगिन">Login</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="button secondary" data-lang="en">English</button>
+          <button class="button secondary" data-lang="hi">हिंदी</button>
+          <button class="button i18n" data-en="Help" data-hi="सहायता">Help</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container section">
+      <h1 class="i18n" data-en="Parent & Teacher Login" data-hi="अभिभावक और शिक्षक लॉगिन">Parent & Teacher Login</h1>
+      <p class="i18n" data-en="Mock login screens for demo. No real accounts are created." data-hi="यह डेमो लॉगिन है। कोई वास्तविक अकाउंट नहीं बनेगा।">Mock login screens for demo. No real accounts are created.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="i18n" data-en="Parent Login" data-hi="अभिभावक लॉगिन">Parent Login</h3>
+          <div class="profile-form">
+            <input placeholder="Email or mobile" />
+            <input type="password" placeholder="Password" />
+            <button class="button i18n" data-en="Login" data-hi="लॉगिन">Login</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="i18n" data-en="Teacher Login" data-hi="शिक्षक लॉगिन">Teacher Login</h3>
+          <div class="profile-form">
+            <input placeholder="School email" />
+            <input type="password" placeholder="Password" />
+            <button class="button i18n" data-en="Login" data-hi="लॉगिन">Login</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="i18n" data-en="Access Reports" data-hi="रिपोर्ट एक्सेस">Access Reports</h3>
+          <p class="i18n" data-en="Preview reports, attendance, and progress dashboards." data-hi="रिपोर्ट, उपस्थिति और प्रगति डैशबोर्ड का प्रीव्यू।">Preview reports, attendance, and progress dashboards.</p>
+          <button class="button secondary i18n" data-en="Open Dashboard" data-hi="डैशबोर्ड खोलें">Open Dashboard</button>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2 class="i18n" data-en="Support Resources" data-hi="सपोर्ट संसाधन">Support Resources</h2>
+        <p class="i18n" data-en="Approved sources for help and guidance." data-hi="हेल्प और मार्गदर्शन के लिए अनुमोदित स्रोत।">
+          Approved sources for help and guidance.
+        </p>
+        <div class="resource-grid" data-resource-list="auth-support"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="i18n" data-en="Secure login coming with live backend." data-hi="लाइव बैकएंड के साथ सुरक्षित लॉगिन।">Secure login coming with live backend.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevEdu - Games & Quizzes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Hind:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          <div class="brand-badge"></div>
+          <div>
+            <div>DevEdu</div>
+            <small class="i18n" data-en="Games Lab" data-hi="खेल प्रयोगशाला">Games Lab</small>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="i18n" data-en="Home" data-hi="होम">Home</a>
+          <a href="learn.html" class="i18n" data-en="Syllabus" data-hi="पाठ्यक्रम">Syllabus</a>
+          <a href="life.html" class="i18n" data-en="Life Skills" data-hi="जीवन कौशल">Life Skills</a>
+          <a href="games.html" class="i18n" data-en="Games" data-hi="खेल">Games</a>
+          <a href="daily.html" class="i18n" data-en="Daily Plan" data-hi="दैनिक योजना">Daily Plan</a>
+          <a href="parents.html" class="i18n" data-en="Parents" data-hi="अभिभावक">Parents</a>
+          <a href="auth.html" class="i18n" data-en="Login" data-hi="लॉगिन">Login</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="button secondary" data-lang="en">English</button>
+          <button class="button secondary" data-lang="hi">हिंदी</button>
+          <button class="button i18n" data-en="Play" data-hi="खेलें">Play</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container section">
+      <div class="profile-bar">
+        <div class="card">
+          <h3 class="i18n" data-en="Learner Profile" data-hi="लर्नर प्रोफाइल">Learner Profile</h3>
+          <select data-profile-select>
+            <option value="Aarav">Aarav</option>
+            <option value="Anaya">Anaya</option>
+            <option value="Vihaan">Vihaan</option>
+          </select>
+        </div>
+        <div class="card">
+          <h3 class="i18n" data-en="Game Streak" data-hi="गेम स्ट्रीक">Game Streak</h3>
+          <p class="i18n" data-en="4 days in a row" data-hi="लगातार 4 दिन">4 days in a row</p>
+        </div>
+      </div>
+      <section class="section">
+        <div class="ai-companion">
+          <div class="ai-bubble">
+            <h2 class="i18n" data-en="Your AI knows you" data-hi="आपका एआई आपको जानता है">Your AI knows you</h2>
+            <p data-personal="greeting">Hi learner! Today we will focus on your goal.</p>
+            <p data-personal="encouragement">I brought examples you love.</p>
+            <p data-personal="style">Your learning style: Visual.</p>
+          </div>
+          <div class="card">
+            <h3 class="i18n" data-en="Update profile" data-hi="प्रोफाइल अपडेट">Update profile</h3>
+            <div class="profile-form">
+              <input data-new-profile placeholder="Add new learner name" />
+              <button class="button secondary i18n" data-add-profile data-en="Save name" data-hi="नाम सेव करें">Save name</button>
+              <input data-profile-field="nickname" placeholder="Nickname" />
+              <input data-profile-field="goal" placeholder="Learning goal" />
+              <input data-profile-field="favorite" placeholder="Favorite topic" />
+              <select data-profile-field="style">
+                <option value="Visual">Visual</option>
+                <option value="Play">Play</option>
+                <option value="Story">Story</option>
+                <option value="Debate">Debate</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+      <h1 class="i18n" data-en="Games, Quizzes, and Challenges" data-hi="खेल, क्विज़ और चुनौतियां">Games, Quizzes, and Challenges</h1>
+      <p class="i18n" data-en="No boring learning. Earn points, unlock badges, and build real skills." data-hi="बोरिंग पढ़ाई नहीं। पॉइंट्स कमाएं, बैज खोलें और वास्तविक कौशल बनाएं।">
+        No boring learning. Earn points, unlock badges, and build real skills.
+      </p>
+
+      <div class="age-toggle">
+        <button class="button secondary" data-age="3-7">3-7</button>
+        <button class="button secondary" data-age="8-12">8-12</button>
+        <button class="button secondary" data-age="13-18">13-18</button>
+      </div>
+
+      <div class="grid-3">
+        <div class="card" data-progress-item="game-science-detective" data-age-group="8-12">
+          <h3 class="i18n" data-en="Science Detective" data-hi="साइंस डिटेक्टिव">Science Detective</h3>
+          <p class="i18n" data-en="Solve everyday mysteries with experiments." data-hi="प्रयोगों से रोज़मर्रा के रहस्य सुलझाएं।">Solve everyday mysteries with experiments.</p>
+          <button class="button ghost i18n" data-en="Play" data-hi="खेलें">Play</button>
+          <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+        </div>
+        <div class="card" data-progress-item="game-math-sprint" data-age-group="8-12">
+          <h3 class="i18n" data-en="Math Sprint" data-hi="मैथ स्प्रिंट">Math Sprint</h3>
+          <p class="i18n" data-en="Fast puzzles with adaptive difficulty." data-hi="एडाप्टिव कठिनाई के साथ तेज़ पज़ल।">Fast puzzles with adaptive difficulty.</p>
+          <button class="button ghost i18n" data-en="Play" data-hi="खेलें">Play</button>
+          <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+        </div>
+        <div class="card" data-progress-item="game-civic-hero" data-age-group="13-18">
+          <h3 class="i18n" data-en="Civic Hero" data-hi="सिविक हीरो">Civic Hero</h3>
+          <p class="i18n" data-en="Complete missions in your neighborhood." data-hi="अपने आस-पड़ोस में मिशन पूरा करें।">Complete missions in your neighborhood.</p>
+          <button class="button ghost i18n" data-en="Play" data-hi="खेलें">Play</button>
+          <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+        </div>
+        <div class="card" data-progress-item="game-story-builder" data-age-group="3-7">
+          <h3 class="i18n" data-en="Story Builder" data-hi="स्टोरी बिल्डर">Story Builder</h3>
+          <p class="i18n" data-en="Create endings and learn values through choices." data-hi="चुनावों से कहानियों के अंत बनाएं और मूल्य सीखें।">Create endings and learn values through choices.</p>
+          <button class="button ghost i18n" data-en="Play" data-hi="खेलें">Play</button>
+          <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+        </div>
+        <div class="card" data-progress-item="game-quiz-race" data-age-group="13-18">
+          <h3 class="i18n" data-en="Quiz Race" data-hi="क्विज़ रेस">Quiz Race</h3>
+          <p class="i18n" data-en="Beat the timer with daily syllabus challenges." data-hi="दैनिक पाठ्यक्रम चुनौतियों के साथ टाइमर हराएं।">Beat the timer with daily syllabus challenges.</p>
+          <button class="button ghost i18n" data-en="Play" data-hi="खेलें">Play</button>
+          <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+        </div>
+        <div class="card" data-progress-item="game-mindfulness" data-age-group="3-7">
+          <h3 class="i18n" data-en="Mindfulness Minute" data-hi="माइंडफुलनेस मिनट">Mindfulness Minute</h3>
+          <p class="i18n" data-en="Breathe, focus, and reset in 60 seconds." data-hi="60 सेकंड में सांस, फोकस और रीसेट।">Breathe, focus, and reset in 60 seconds.</p>
+          <button class="button ghost i18n" data-en="Play" data-hi="खेलें">Play</button>
+          <button class="button secondary i18n" data-progress-toggle data-en="Mark done" data-hi="पूरा हुआ">Mark done</button>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2 class="i18n" data-en="Game Guides" data-hi="गेम गाइड">Game Guides</h2>
+        <p class="i18n" data-en="Approved sources by age group. Links can be updated later." data-hi="उम्र अनुसार अनुमोदित स्रोत। लिंक बाद में बदले जा सकते हैं।">
+          Approved sources by age group. Links can be updated later.
+        </p>
+        <div class="resource-grid" data-resource-list="games-3-7"></div>
+        <div class="resource-grid" data-resource-list="games-8-12"></div>
+        <div class="resource-grid" data-resource-list="games-13-18"></div>
+      </section>
+
+      <section class="section">
+        <h2 class="i18n" data-en="Age Missions" data-hi="उम्र के अनुसार मिशन">Age Missions</h2>
+        <div class="tiles-grid">
+          <div class="big-tile i18n" data-age-group="3-7" data-en="3-7: Color hunt + counting trail" data-hi="3-7: रंग खोज + गिनती ट्रेल">3-7: Color hunt + counting trail</div>
+          <div class="big-tile i18n" data-age-group="8-12" data-en="8-12: Build a mini weather station" data-hi="8-12: मिनी मौसम स्टेशन बनाएं">8-12: Build a mini weather station</div>
+          <div class="big-tile i18n" data-age-group="13-18" data-en="13-18: Debate a civic dilemma" data-hi="13-18: नागरिक दुविधा पर बहस">13-18: Debate a civic dilemma</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div id="quiz" class="card quiz-panel">
+          <div class="badge i18n" data-en="Daily Quiz" data-hi="दैनिक क्विज़">Daily Quiz</div>
+          <h2 class="quiz-question">Question</h2>
+          <div class="quiz-options"></div>
+          <div class="progress"><span></span></div>
+          <div class="i18n" data-en="Score" data-hi="स्कोर">Score</div>
+          <div class="quiz-score">0 / 3</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="i18n" data-en="Gamified learning keeps motivation high." data-hi="गेमिफाइड लर्निंग से प्रेरणा ऊंची रहती है।">Gamified learning keeps motivation high.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Skills — DevEdu India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topnav glass">
+    <div class="nav-left"><button class="hamburger">☰</button><a href="index.html" class="brand-badge">🎓 DevEdu India</a></div>
+    <div class="nav-links"><a href="index.html">Home</a><a href="learn.html">Learn</a><a href="games.html">Games</a><a href="life.html" class="active">Life Skills</a><a href="creative.html">Creative</a><a href="health.html">Health</a><a href="career.html">Career</a><a href="stories.html">Stories</a><a href="daily.html">Daily Plan</a><a href="parents.html">Parents</a></div>
+    <div class="nav-right"><button data-theme-toggle class="icon-btn">🌙</button><button data-open-settings class="icon-btn">⚙️</button></div>
+  </nav>
+  <div class="mobile-drawer"><button class="drawer-close">✕</button><a href="index.html">🏠 Home</a><a href="learn.html">📚 Learn</a><a href="games.html">🎮 Games</a><a href="life.html">💡 Life Skills</a><a href="creative.html">🎨 Creative</a><a href="health.html">🧘 Health</a><a href="career.html">🗺️ Career</a><a href="stories.html">📖 Stories</a><a href="daily.html">📅 Daily Plan</a><a href="parents.html">👪 Parents</a></div>
+
+  <section class="control-bar glass">
+    <div class="control-group"><label>Profile</label><select data-profile-select></select></div>
+    <div class="control-group"><button data-lang="en" class="button small">EN</button><button data-lang="hi" class="button small secondary">हिंदी</button></div>
+    <div class="control-group"><button data-age="3-7" class="button small secondary">3-7</button><button data-age="8-12" class="button small">8-12</button><button data-age="13-18" class="button small secondary">13-18</button></div>
+  </section>
+
+  <section class="xp-section"><div class="xp-bar"><div class="xp-fill"></div></div><div class="xp-info"><span class="xp-badge">⭐ Level <span class="xp-level">1</span></span><span class="xp-text">0/100 XP</span><span class="xp-badge">🔥 <span class="streak-count">0</span></span></div></section>
+
+  <section class="card glass reveal" style="text-align:center;">
+    <h1 class="i18n" data-en="💡 Life Skills & Values" data-hi="💡 जीवन कौशल और मूल्य">💡 Life Skills & Values</h1>
+    <p class="i18n" data-en="Build character, empathy, civic sense and become a responsible citizen." data-hi="चरित्र, सहानुभूति, नागरिक समझ विकसित करें और जिम्मेदार नागरिक बनें।">Build character, empathy, civic sense and become a responsible citizen.</p>
+  </section>
+
+  <!-- MORAL VALUES -->
+  <section class="main-grid reveal">
+    <div class="card">
+      <h2>🤝 Empathy</h2>
+      <p class="i18n" data-en="Understanding others' feelings is a superpower. Practice it daily!" data-hi="दूसरों की भावनाओं को समझना एक महाशक्ति है!">Understanding others' feelings is a superpower.</p>
+      <div class="progress" data-metric="empathy"><span></span></div>
+      <h4 class="i18n" data-en="Today's Challenge:" data-hi="आज की चुनौती:">Today's Challenge:</h4>
+      <p class="i18n" data-en="Say something kind to a classmate or family member." data-hi="किसी सहपाठी या परिवार के सदस्य से कुछ अच्छा कहें।">Say something kind to a classmate or family member.</p>
+    </div>
+    <div class="card">
+      <h2>✅ Responsibility</h2>
+      <p class="i18n" data-en="Taking ownership of your actions shows maturity." data-hi="अपने कार्यों की जिम्मेदारी लेना परिपक्वता दिखाता है।">Taking ownership of your actions shows maturity.</p>
+      <div class="progress" data-metric="responsibility"><span></span></div>
+      <h4 class="i18n" data-en="Today's Challenge:" data-hi="आज की चुनौती:">Today's Challenge:</h4>
+      <p class="i18n" data-en="Complete one chore without being asked." data-hi="बिना पूछे एक काम पूरा करें।">Complete one chore without being asked.</p>
+    </div>
+    <div class="card">
+      <h2>🛡️ Safety Awareness</h2>
+      <p class="i18n" data-en="Know how to stay safe — online and offline." data-hi="ऑनलाइन और ऑफलाइन सुरक्षित रहना जानें।">Know how to stay safe.</p>
+      <div class="progress" data-metric="safety"><span></span></div>
+      <h4 class="i18n" data-en="Tip:" data-hi="टिप:">Tip:</h4>
+      <p class="i18n" data-en="Never share personal info online. Always tell a trusted adult if something feels wrong." data-hi="ऑनलाइन कभी निजी जानकारी साझा न करें। गलत लगे तो विश्वसनीय बड़े को बताएं।">Never share personal info online.</p>
+    </div>
+  </section>
+
+  <!-- KINDNESS TRACKER -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="💝 Kindness Tracker" data-hi="💝 दया ट्रैकर">💝 Kindness Tracker</h2>
+    <p class="i18n" data-en="Write what kind thing you did today and earn XP!" data-hi="आज आपने क्या अच्छा किया, लिखें और XP कमाएं!">Write what kind thing you did today!</p>
+    <textarea placeholder="Today I was kind because…" style="width:100%;min-height:80px;padding:.8rem;border-radius:10px;border:1px solid var(--border);font-family:inherit;font-size:1rem;resize:vertical;"></textarea>
+    <button class="button primary" style="margin-top:.5rem;">Save</button>
+  </section>
+
+  <!-- CIVIC SENSE -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🏛️ Civic Sense" data-hi="🏛️ नागरिक समझ">🏛️ Civic Sense</h2>
+    <div class="main-grid" style="margin-top:1rem;">
+      <div class="feature-card mini">
+        <span class="feature-icon">🚮</span>
+        <h3 class="i18n" data-en="Cleanliness" data-hi="स्वच्छता">Cleanliness</h3>
+        <p class="i18n" data-en="Keep your surroundings clean. Use dustbins." data-hi="अपने आसपास साफ रखें। कूड़ेदान का उपयोग करें।">Keep surroundings clean.</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🚦</span>
+        <h3 class="i18n" data-en="Traffic Rules" data-hi="यातायात नियम">Traffic Rules</h3>
+        <p class="i18n" data-en="Follow signals, use zebra crossings, wear helmets." data-hi="सिग्नल का पालन करें, ज़ेबरा क्रॉसिंग का उपयोग करें।">Follow signals and stay safe.</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🌳</span>
+        <h3 class="i18n" data-en="Environment" data-hi="पर्यावरण">Environment</h3>
+        <p class="i18n" data-en="Plant trees, save water, reduce plastic." data-hi="पेड़ लगाएं, पानी बचाएं, प्लास्टिक कम करें।">Plant trees, save water.</p>
+      </div>
+      <div class="feature-card mini">
+        <span class="feature-icon">🗳️</span>
+        <h3 class="i18n" data-en="Democracy" data-hi="लोकतंत्र">Democracy</h3>
+        <p class="i18n" data-en="Understand voting, governance and your rights." data-hi="मतदान, शासन और अपने अधिकार समझें।">Understand your rights.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANTI-BULLYING -->
+  <section class="card reveal">
+    <h2 class="i18n" data-en="🛑 Say No to Bullying" data-hi="🛑 बदमाशी को ना कहें">🛑 Say No to Bullying</h2>
+    <div class="main-grid" style="margin-top:1rem;">
+      <div style="padding:1rem;">
+        <h3 class="i18n" data-en="What is Bullying?" data-hi="बदमाशी क्या है?">What is Bullying?</h3>
+        <p class="i18n" data-en="Bullying is when someone hurts, scares, or leaves out another person on purpose, again and again." data-hi="बदमाशी तब होती है जब कोई जानबूझकर बार-बार किसी को चोट पहुंचाता, डराता या अलग करता है।">Bullying is repeated hurtful behavior.</p>
+      </div>
+      <div style="padding:1rem;">
+        <h3 class="i18n" data-en="What to Do?" data-hi="क्या करें?">What to Do?</h3>
+        <ul style="text-align:left;">
+          <li class="i18n" data-en="Tell a trusted adult immediately" data-hi="तुरंत किसी विश्वसनीय बड़े को बताएं">Tell a trusted adult</li>
+          <li class="i18n" data-en="Don't bully back — walk away" data-hi="बदला न लें — वहां से चले जाएं">Walk away</li>
+          <li class="i18n" data-en="Stand up for others who are being bullied" data-hi="दूसरों के लिए आवाज़ उठाएं">Stand up for others</li>
+          <li class="i18n" data-en="Be kind to everyone" data-hi="सबके साथ दया से पेश आएं">Be kind</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="card reveal">
+    <h2>📦 Resources</h2>
+    <div class="resource-grid" data-resource-list="life-skills"></div>
+  </section>
+
+  <section class="card reveal"><h2>🏆 Achievements</h2><div class="achievement-grid"></div></section>
+
+  <footer><p style="text-align:center;">© 2025 DevEdu India 🇮🇳</p></footer>
+
+  <button class="ai-chat-toggle">🤖</button>
+  <div class="ai-chat hidden"><div class="ai-chat-header"><span>🤖 Guru</span><button class="ai-chat-close">✕</button></div><div class="ai-chat-messages"></div><div class="ai-chat-input"><input type="text" placeholder="Ask me anything…" /><button>Send</button></div></div>
+  <div class="settings-overlay"></div>
+  <div class="settings-panel"><div class="settings-header"><h3>⚙️ Settings</h3><button data-close-settings class="icon-btn">✕</button></div><div class="settings-body"><div class="setting-item"><span>🌙 Dark Mode</span><button data-toggle-dark class="toggle-btn">Off</button></div><div class="setting-item"><span>📖 Dyslexia Font</span><button data-toggle-dyslexia class="toggle-btn">Off</button></div><div class="setting-item"><span>🎯 High Contrast</span><button data-toggle-contrast class="toggle-btn">Off</button></div></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
